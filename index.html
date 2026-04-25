@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Dhafa P. — AI/ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8650A;
+    --orange-2: #F5863A;
+    --orange-light: #FFF3EB;
+    --orange-dim: rgba(232,101,10,0.12);
+    --bg: #FAFAF8;
+    --bg-card: #FFFFFF;
+    --text: #1A1A18;
+    --text-2: #5C5C58;
+    --text-3: #9C9C96;
+    --border: rgba(0,0,0,0.08);
+    --border-2: rgba(0,0,0,0.14);
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 2px 16px rgba(0,0,0,0.06), 0 0 0 0.5px rgba(0,0,0,0.06);
+    --shadow-hover: 0 8px 32px rgba(232,101,10,0.12), 0 0 0 0.5px rgba(232,101,10,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,248,0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 17px;
+    color: var(--orange); text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 14px; color: var(--text-2);
+    text-decoration: none; font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+
+  /* ─── SECTIONS ─── */
+  section { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ─── HERO ─── */
+  .hero-wrap {
+    max-width: 1100px; margin: 0 auto;
+    padding: 6rem 2rem 5rem;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 4rem; align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--orange-light); border: 0.5px solid rgba(232,101,10,0.25);
+    color: var(--orange); font-size: 12px; font-weight: 500;
+    padding: 5px 12px; border-radius: 999px; margin-bottom: 1.25rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .hero-tag::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--orange); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+  .hero-sub {
+    font-size: 17px; color: var(--text-2);
+    max-width: 500px; line-height: 1.7;
+    margin-bottom: 2rem; font-weight: 300;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-fill {
+    background: var(--orange); color: #fff;
+    border: none; padding: 11px 22px;
+    border-radius: var(--radius-sm);
+    font-size: 14px; font-weight: 500;
+    cursor: pointer; font-family: inherit;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-fill:hover { background: var(--orange-2); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--text);
+    border: 0.5px solid var(--border-2); padding: 11px 22px;
+    border-radius: var(--radius-sm); font-size: 14px;
+    font-weight: 400; cursor: pointer; font-family: inherit;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-1px); }
+
+  .hero-avatar {
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange-light) 0%, #FFE0CC 100%);
+    border: 3px solid rgba(232,101,10,0.15);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; flex-shrink: 0;
+  }
+  .hero-avatar-initials {
+    font-family: 'Syne', sans-serif;
+    font-size: 52px; font-weight: 800;
+    color: var(--orange); letter-spacing: -0.04em;
+  }
+  .hero-avatar-ring {
+    position: absolute; inset: -8px;
+    border-radius: 50%;
+    border: 0.5px dashed rgba(232,101,10,0.3);
+    animation: spin 20s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ─── STATS ROW ─── */
+  .stats-row {
+    display: flex; gap: 2rem; flex-wrap: wrap;
+    padding: 2rem 0; border-top: 0.5px solid var(--border);
+    margin-bottom: 5rem;
+  }
+  .stat-item { display: flex; flex-direction: column; gap: 2px; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px; font-weight: 800;
+    color: var(--orange); letter-spacing: -0.04em;
+  }
+  .stat-label { font-size: 13px; color: var(--text-3); }
+
+  /* ─── SKILLS ─── */
+  .skills-section { margin-bottom: 5rem; }
+  .section-eyebrow {
+    font-size: 11px; font-weight: 500; color: var(--orange);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .section-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px; font-weight: 700;
+    color: var(--text); letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill-pill {
+    background: var(--bg-card); border: 0.5px solid var(--border-2);
+    border-radius: 999px; padding: 7px 16px;
+    font-size: 13px; color: var(--text-2);
+    transition: all 0.2s; cursor: default;
+  }
+  .skill-pill:hover {
+    background: var(--orange-light);
+    border-color: rgba(232,101,10,0.3);
+    color: var(--orange);
+  }
+  .skill-pill.featured {
+    background: var(--orange-dim);
+    border-color: rgba(232,101,10,0.25);
+    color: var(--orange);
+  }
+
+  /* ─── PROJECTS ─── */
+  .projects-section { margin-bottom: 5rem; }
+  .projects-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 1.5rem;
+  }
+  .btn-add-project {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--orange); color: #fff;
+    border: none; padding: 9px 18px;
+    border-radius: var(--radius-sm); font-size: 13px;
+    font-weight: 500; cursor: pointer; font-family: inherit;
+    transition: background 0.2s; flex-shrink: 0;
+  }
+  .btn-add-project:hover { background: var(--orange-2); }
+  .btn-add-project svg { width: 14px; height: 14px; }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+    cursor: default;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+    border-color: rgba(232,101,10,0.2);
+  }
+
+  .card-type-badge {
+    position: absolute; top: 10px; left: 10px; z-index: 2;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 3px 9px; border-radius: 999px;
+    backdrop-filter: blur(8px);
+  }
+  .card-type-badge.paper { background: rgba(234,243,222,0.93); color: #3B6D11; border: 0.5px solid rgba(99,153,34,0.3); }
+  .card-type-badge.competition { background: rgba(238,240,255,0.93); color: #4B50C4; border: 0.5px solid rgba(75,80,196,0.3); }
+
+
+  .project-media {
+    width: 100%; aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #FFF3EB 0%, #FFE8D4 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .project-media img, .project-media video {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .project-media-placeholder {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .project-media-placeholder svg { opacity: 0.3; }
+  .project-media-placeholder span { font-size: 12px; color: var(--text-3); }
+
+  .project-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
+  .project-tag {
+    font-size: 11px; font-weight: 500;
+    background: var(--orange-light);
+    color: var(--orange); border-radius: 999px;
+    padding: 3px 10px; letter-spacing: 0.02em;
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--text); letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+  }
+  .project-desc {
+    font-size: 14px; color: var(--text-2);
+    line-height: 1.6; margin-bottom: 1rem;
+    flex: 1;
+  }
+  .project-links { display: flex; gap: 10px; margin-top: auto; }
+  .project-link {
+    font-size: 13px; color: var(--text-3);
+    text-decoration: none; display: flex; align-items: center; gap: 5px;
+    transition: color 0.2s;
+  }
+  .project-link:hover { color: var(--orange); }
+  .project-link svg { width: 13px; height: 13px; }
+
+  .project-actions {
+    display: flex; gap: 8px;
+    padding: 0.75rem 1.25rem;
+    border-top: 0.5px solid var(--border);
+    background: #FAFAF8;
+  }
+  .btn-edit-sm {
+    font-size: 12px; color: var(--text-3);
+    background: none; border: 0.5px solid var(--border);
+    border-radius: 6px; padding: 4px 10px;
+    cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+  }
+  .btn-edit-sm:hover { color: var(--orange); border-color: rgba(232,101,10,0.3); }
+  .btn-delete-sm {
+    font-size: 12px; color: var(--text-3);
+    background: none; border: 0.5px solid var(--border);
+    border-radius: 6px; padding: 4px 10px;
+    cursor: pointer; font-family: inherit;
+    transition: all 0.2s; margin-left: auto;
+  }
+  .btn-delete-sm:hover { color: #E24B4A; border-color: rgba(226,75,74,0.3); }
+
+  .empty-state {
+    grid-column: 1/-1;
+    padding: 4rem 2rem;
+    text-align: center;
+    border: 0.5px dashed var(--border-2);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+  }
+  .empty-icon {
+    width: 56px; height: 56px; margin: 0 auto 1rem;
+    background: var(--orange-light); border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .empty-state h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px; font-weight: 700; color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .empty-state p { font-size: 14px; color: var(--text-3); margin-bottom: 1.5rem; }
+
+  /* ─── ABOUT ─── */
+  .about-section { margin-bottom: 5rem; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: start;
+  }
+  .about-text p {
+    font-size: 15px; color: var(--text-2);
+    line-height: 1.8; margin-bottom: 1rem;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .about-goals { display: flex; flex-direction: column; gap: 12px; }
+  .goal-card {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 1rem 1.25rem;
+  }
+  .goal-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px; font-weight: 700;
+    color: var(--text); margin-bottom: 4px;
+  }
+  .goal-card p { font-size: 13px; color: var(--text-3); line-height: 1.5; }
+
+  /* ─── CONTACT ─── */
+  .contact-section { margin-bottom: 5rem; }
+  .contact-card {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-2) 100%);
+    border-radius: var(--radius);
+    padding: 3rem;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 2rem;
+  }
+  .contact-card h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px; font-weight: 800;
+    color: #fff; letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .contact-card p { font-size: 15px; color: rgba(255,255,255,0.8); }
+  .contact-links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .contact-link {
+    background: rgba(255,255,255,0.18);
+    color: #fff; border: 0.5px solid rgba(255,255,255,0.3);
+    border-radius: var(--radius-sm); padding: 10px 20px;
+    font-size: 14px; text-decoration: none; font-weight: 500;
+    transition: background 0.2s; display: flex; align-items: center; gap: 8px;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.28); }
+  .contact-link svg { width: 16px; height: 16px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: 13px; color: var(--text-3);
+  }
+  footer span { color: var(--orange); }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.4);
+    display: none; align-items: center; justify-content: center;
+    padding: 1.5rem;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 2rem;
+    width: 100%; max-width: 560px;
+    max-height: 90vh; overflow-y: auto;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+    animation: slideUp 0.25s ease;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .modal-header {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 1.5rem;
+  }
+  .modal-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 700; color: var(--text);
+  }
+  .modal-close {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: none; border: 0.5px solid var(--border);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    color: var(--text-3); font-size: 18px;
+    transition: all 0.2s;
+  }
+  .modal-close:hover { background: #FFF0E6; border-color: rgba(232,101,10,0.3); color: var(--orange); }
+
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label {
+    display: block; font-size: 13px; font-weight: 500;
+    color: var(--text-2); margin-bottom: 6px;
+  }
+  .form-label span { color: var(--orange); }
+  .form-input, .form-textarea, .form-select {
+    width: 100%; padding: 10px 14px;
+    border: 0.5px solid var(--border-2);
+    border-radius: var(--radius-sm);
+    font-size: 14px; font-family: inherit;
+    color: var(--text); background: var(--bg);
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-textarea:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px var(--orange-dim);
+  }
+  .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+  .form-hint { font-size: 12px; color: var(--text-3); margin-top: 4px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .media-upload-area {
+    border: 1.5px dashed var(--border-2);
+    border-radius: var(--radius-sm); padding: 2rem 1rem;
+    text-align: center; cursor: pointer;
+    transition: all 0.2s; background: var(--bg);
+  }
+  .media-upload-area:hover {
+    border-color: var(--orange);
+    background: var(--orange-light);
+  }
+  .media-upload-area p { font-size: 13px; color: var(--text-3); margin-top: 6px; }
+  .media-upload-area strong { font-size: 14px; color: var(--text-2); }
+  #mediaFileInput { display: none; }
+  .media-preview { margin-top: 10px; }
+  .media-preview img, .media-preview video {
+    max-width: 100%; border-radius: var(--radius-sm); max-height: 180px; object-fit: cover;
+  }
+
+  .modal-footer { display: flex; gap: 10px; justify-content: flex-end; margin-top: 1.5rem; }
+  .btn-cancel {
+    background: none; border: 0.5px solid var(--border-2);
+    border-radius: var(--radius-sm); padding: 10px 20px;
+    font-size: 14px; cursor: pointer; font-family: inherit;
+    color: var(--text-2); transition: all 0.2s;
+  }
+  .btn-cancel:hover { border-color: var(--text-3); }
+  .btn-save {
+    background: var(--orange); color: #fff;
+    border: none; border-radius: var(--radius-sm); padding: 10px 24px;
+    font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit;
+    transition: background 0.2s;
+  }
+  .btn-save:hover { background: var(--orange-2); }
+
+  /* ─── ACHIEVEMENTS ─── */
+  .achievements-section { margin-bottom: 5rem; }
+  .ach-platforms {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem; margin-bottom: 2rem;
+  }
+  .platform-card {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: box-shadow 0.25s, border-color 0.25s;
+  }
+  .platform-card:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(232,101,10,0.2);
+  }
+  .platform-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+  .platform-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--orange-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .platform-icon svg { width: 18px; height: 18px; }
+  .platform-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px; font-weight: 700; color: var(--text);
+  }
+  .platform-stats { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.25rem; }
+  .pstat {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 10px; border-bottom: 0.5px solid var(--border);
+  }
+  .pstat:last-child { border-bottom: none; padding-bottom: 0; }
+  .pstat-label { font-size: 13px; color: var(--text-3); }
+  .pstat-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px; font-weight: 700; color: var(--text);
+  }
+  .pstat-value.highlight { color: var(--orange); }
+  .pstat-empty { font-size: 13px; color: var(--text-3); font-style: italic; }
+  .btn-edit-platform {
+    width: 100%; background: none;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm); padding: 7px;
+    font-size: 12px; color: var(--text-3);
+    cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+  }
+  .btn-edit-platform:hover { border-color: rgba(232,101,10,0.3); color: var(--orange); }
+
+  /* awards list */
+  .awards-wrap {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .awards-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .awards-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px; font-weight: 700; color: var(--text);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .awards-title-icon {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: var(--orange-light);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .awards-title-icon svg { width: 14px; height: 14px; }
+  .awards-list { padding: 0; }
+  .award-row {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+    transition: background 0.15s;
+  }
+  .award-row:last-child { border-bottom: none; }
+  .award-row:hover { background: var(--orange-light); }
+  .award-year {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px; font-weight: 700; color: var(--orange);
+    min-width: 40px;
+  }
+  .award-info { flex: 1; }
+  .award-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .award-org { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+  .award-result {
+    font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .award-result.winner {
+    background: #FFF3EB; color: var(--orange);
+    border: 0.5px solid rgba(232,101,10,0.25);
+  }
+  .award-result.finalist {
+    background: #EAF3DE; color: #3B6D11;
+    border: 0.5px solid rgba(99,153,34,0.25);
+  }
+  .award-result.participant {
+    background: var(--bg); color: var(--text-3);
+    border: 0.5px solid var(--border);
+  }
+  .award-actions { display: flex; gap: 6px; }
+  .award-btn {
+    font-size: 11px; color: var(--text-3);
+    background: none; border: 0.5px solid var(--border);
+    border-radius: 5px; padding: 3px 8px;
+    cursor: pointer; font-family: inherit; transition: all 0.2s;
+  }
+  .award-btn:hover { color: var(--orange); border-color: rgba(232,101,10,0.3); }
+  .award-btn.del:hover { color: #E24B4A; border-color: rgba(226,75,74,0.3); }
+  .awards-empty {
+    padding: 3rem; text-align: center;
+    font-size: 14px; color: var(--text-3);
+  }
+  .awards-footer {
+    padding: 1rem 1.5rem;
+    border-top: 0.5px solid var(--border);
+    background: #FAFAF8;
+  }
+  .btn-add-award {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm); padding: 7px 14px;
+    font-size: 13px; color: var(--text-2);
+    cursor: pointer; font-family: inherit; transition: all 0.2s;
+  }
+  .btn-add-award:hover { border-color: var(--orange); color: var(--orange); }
+  .btn-add-award svg { width: 12px; height: 12px; }
+
+  /* ─── LEADERSHIP ─── */
+  .leadership-section { margin-bottom: 5rem; }
+  .leadership-list { display: flex; flex-direction: column; gap: 1rem; }
+  .lead-card {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: grid; grid-template-columns: auto 1fr auto;
+    gap: 1.25rem; align-items: start;
+    transition: box-shadow 0.25s, border-color 0.25s;
+  }
+  .lead-card:hover { box-shadow: var(--shadow-hover); border-color: rgba(232,101,10,0.2); }
+  .lead-period {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px; font-weight: 700; color: var(--orange);
+    white-space: nowrap; padding-top: 3px;
+    min-width: 80px;
+  }
+  .lead-body { flex: 1; }
+  .lead-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px; font-weight: 700; color: var(--text);
+    letter-spacing: -0.01em; margin-bottom: 2px;
+  }
+  .lead-org { font-size: 13px; color: var(--orange); font-weight: 500; margin-bottom: 6px; }
+  .lead-impact { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+  .lead-actions { display: flex; gap: 6px; flex-shrink: 0; }
+  .lead-empty {
+    padding: 3rem 2rem; text-align: center;
+    border: 0.5px dashed var(--border-2);
+    border-radius: var(--radius); background: var(--bg-card);
+  }
+  .lead-empty h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px;
+  }
+  .lead-empty p { font-size: 13px; color: var(--text-3); margin-bottom: 1.5rem; }
+
+  /* skills editable */
+  .skills-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 1.5rem;
+  }
+  .skill-pill-wrap { position: relative; display: inline-flex; align-items: center; }
+  .skill-pill-del {
+    display: none; position: absolute; top: -6px; right: -6px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: #E24B4A; color: #fff; font-size: 10px;
+    border: none; cursor: pointer; align-items: center; justify-content: center;
+    line-height: 1;
+  }
+  .skill-pill-wrap:hover .skill-pill-del { display: flex; }
+  .skill-clickable { cursor: pointer !important; }
+  .skill-clickable:hover { background: var(--orange-dim) !important; border-color: rgba(232,101,10,0.4) !important; color: var(--orange) !important; transform: translateY(-1px); transition: all 0.15s; }
+
+  /* skill detail modal */
+  .skill-detail-modal { max-width: 540px; }
+  .skill-detail-badge {
+    display: inline-block; background: var(--orange-light);
+    color: var(--orange); font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 999px;
+    letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .detail-section-title {
+    font-size: 11px; font-weight: 600; color: var(--text-3);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  .detail-section { margin-bottom: 1.5rem; }
+  .detail-divider { border: none; border-top: 0.5px solid var(--border); margin: 1.25rem 0; }
+  .detail-empty { font-size: 13px; color: var(--text-3); font-style: italic; padding: 0.75rem 0; }
+  .detail-resource-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 0.75rem 0; border-bottom: 0.5px solid var(--border);
+  }
+  .detail-resource-row:last-child { border-bottom: none; }
+  .detail-resource-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .detail-resource-info { flex: 1; }
+  .detail-resource-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .detail-resource-meta { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+  .detail-resource-link { font-size: 12px; color: var(--orange); text-decoration: none; display: inline-block; margin-top: 3px; }
+  .detail-resource-link:hover { text-decoration: underline; }
+  .detail-applied-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 0.6rem 0; border-bottom: 0.5px solid var(--border);
+  }
+  .detail-applied-row:last-child { border-bottom: none; }
+  .detail-applied-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+  .detail-applied-name { font-size: 14px; color: var(--text); flex: 1; }
+
+
+
+
+  /* ─── CERTIFICATIONS & LANGUAGES ─── */
+  .certs-section { margin-bottom: 5rem; }
+  .certs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .certs-block { background: var(--bg-card); border: 0.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .certs-block-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.1rem 1.4rem; border-bottom: 0.5px solid var(--border); background: #FAFAF8;
+  }
+  .certs-block-title {
+    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+    color: var(--text); display: flex; align-items: center; gap: 8px;
+  }
+  .certs-block-icon {
+    width: 26px; height: 26px; border-radius: 7px; background: var(--orange-light);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .certs-block-icon svg { width: 13px; height: 13px; }
+  .btn-add-cert {
+    font-size: 12px; color: var(--text-3); background: none;
+    border: 0.5px solid var(--border); border-radius: 6px; padding: 4px 10px;
+    cursor: pointer; font-family: inherit; transition: all 0.2s;
+  }
+  .btn-add-cert:hover { color: var(--orange); border-color: rgba(232,101,10,0.3); }
+  .cert-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 0.9rem 1.4rem; border-bottom: 0.5px solid var(--border); transition: background 0.15s;
+  }
+  .cert-row:last-child { border-bottom: none; }
+  .cert-row:hover { background: var(--orange-light); }
+  .cert-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+  .cert-info { flex: 1; }
+  .cert-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .cert-meta { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+  .cert-score { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--orange); white-space: nowrap; }
+  .cert-actions { display: flex; gap: 5px; }
+  .cert-btn { font-size: 11px; color: var(--text-3); background: none; border: 0.5px solid var(--border); border-radius: 5px; padding: 3px 7px; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+  .cert-btn:hover { color: var(--orange); border-color: rgba(232,101,10,0.3); }
+  .cert-btn.del:hover { color: #E24B4A; border-color: rgba(226,75,74,0.3); }
+  .cert-empty { padding: 2rem 1.4rem; text-align: center; font-size: 13px; color: var(--text-3); font-style: italic; }
+  .lang-row { padding: 0.9rem 1.4rem; border-bottom: 0.5px solid var(--border); transition: background 0.15s; }
+  .lang-row:last-child { border-bottom: none; }
+  .lang-row:hover { background: var(--orange-light); }
+  .lang-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .lang-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .lang-right { display: flex; align-items: center; gap: 8px; }
+  .lang-level { font-size: 12px; color: var(--text-3); }
+  .lang-bar-bg { width: 100%; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .lang-bar-fill { height: 100%; background: var(--orange); border-radius: 2px; transition: width 0.4s ease; }
+
+  @media (max-width: 768px) {
+    .hero-wrap { grid-template-columns: 1fr; padding: 3rem 1.5rem 3rem; }
+    .hero-avatar { display: none; }
+    .hero h1 { font-size: 38px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .ach-platforms { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: 1fr; }
+    .contact-card { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+    .form-row { grid-template-columns: 1fr; }
+    nav { padding: 0 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 0 1.5rem; }
+    .stats-row { gap: 1.5rem; }
+    .award-row { flex-wrap: wrap; gap: 8px; }
+  }
+  @media (max-width: 480px) {
+    .hero-ctas { flex-direction: column; }
+    .btn-fill, .btn-ghost { text-align: center; }
+    .projects-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0; transform: translateY(16px);
+    animation: fadeIn 0.5s ease forwards;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; transform: none; }
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.05s; }
+  .fade-in:nth-child(2) { animation-delay: 0.12s; }
+  .fade-in:nth-child(3) { animation-delay: 0.19s; }
+  .fade-in:nth-child(4) { animation-delay: 0.26s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">ADP.</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#certifications">Credentials</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero">
+    <div class="hero-tag">Robotics &amp; AI Student</div>
+    <h1>Aditya<br><em>Dhafa P.</em></h1>
+    <p class="hero-sub">
+      Building intelligent systems at the intersection of <strong>perception</strong>, <strong>machine learning</strong>, and <strong>robotics</strong>.
+      Currently exploring AI/ML Engineering &amp; Perception at Universitas Airlangga.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-fill">View Projects</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-avatar">
+    <div class="hero-avatar-ring"></div>
+    <div class="hero-avatar-initials">ADP</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section>
+  <div class="stats-row">
+    <div class="stat-item">
+      <span class="stat-num" id="stat-projects">0</span>
+      <span class="stat-label">Projects built</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">2026</span>
+      <span class="stat-label">Currently active</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">CMU</span>
+      <span class="stat-label">MS. ML target</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">AI/ML</span>
+      <span class="stat-label">Focus area</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="skills-header">
+    <div>
+      <p class="section-eyebrow">Tech Stack</p>
+      <h2 class="section-heading">Skills &amp; Tools</h2>
+    </div>
+    <button class="btn-add-project" onclick="openSkillModal()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+      </svg>
+      Add Skill
+    </button>
+  </div>
+  <div class="skills-grid" id="skillsGrid"></div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-section">
+  <div class="projects-header">
+    <div>
+      <p class="section-eyebrow">Work</p>
+      <h2 class="section-heading">Projects</h2>
+    </div>
+    <button class="btn-add-project" onclick="openModal()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+      </svg>
+      Add Project
+    </button>
+  </div>
+  <div class="projects-grid" id="projectsGrid"></div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="achievements-section">
+  <p class="section-eyebrow">Progress</p>
+  <h2 class="section-heading">Achievements</h2>
+
+  <div class="ach-platforms">
+    <!-- Codeforces -->
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2">
+            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+          </svg>
+        </div>
+        <div class="platform-name">Codeforces</div>
+      </div>
+      <div class="platform-stats" id="cf-stats"></div>
+      <button class="btn-edit-platform" onclick="openPlatformModal('cf')">Edit stats</button>
+    </div>
+
+    <!-- Kaggle -->
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="platform-name">Kaggle</div>
+      </div>
+      <div class="platform-stats" id="kaggle-stats"></div>
+      <button class="btn-edit-platform" onclick="openPlatformModal('kaggle')">Edit stats</button>
+    </div>
+
+    <!-- LeetCode -->
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/>
+          </svg>
+        </div>
+        <div class="platform-name">LeetCode</div>
+      </div>
+      <div class="platform-stats" id="lc-stats"></div>
+      <button class="btn-edit-platform" onclick="openPlatformModal('lc')">Edit stats</button>
+    </div>
+  </div>
+
+  <!-- Awards & Events -->
+  <div class="awards-wrap">
+    <div class="awards-header">
+      <div class="awards-title">
+        <div class="awards-title-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2">
+            <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+        </div>
+        Awards &amp; Events
+      </div>
+      <span style="font-size:12px;color:var(--text-3)" id="awards-count">0 entries</span>
+    </div>
+    <div id="awards-list" class="awards-list"></div>
+    <div class="awards-footer">
+      <button class="btn-add-award" onclick="openAwardModal()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+        </svg>
+        Add award / event
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership" class="leadership-section">
+  <div class="projects-header">
+    <div>
+      <p class="section-eyebrow">Involvement</p>
+      <h2 class="section-heading">Leadership &amp; Involvement</h2>
+    </div>
+    <button class="btn-add-project" onclick="openLeadModal()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+      </svg>
+      Add Entry
+    </button>
+  </div>
+  <div id="leadershipList"></div>
+</section>
+
+<!-- CERTIFICATIONS & LANGUAGES -->
+<section id="certifications" class="certs-section">
+  <p class="section-eyebrow">Credentials</p>
+  <h2 class="section-heading">Certifications &amp; Languages</h2>
+  <div class="certs-grid">
+    <!-- Certifications -->
+    <div class="certs-block">
+      <div class="certs-block-header">
+        <div class="certs-block-title">
+          <div class="certs-block-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2">
+              <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+            </svg>
+          </div>
+          Certifications
+        </div>
+        <button class="btn-add-cert" onclick="openCertModal()">+ Add</button>
+      </div>
+      <div id="certList"></div>
+    </div>
+    <!-- Languages -->
+    <div class="certs-block">
+      <div class="certs-block-header">
+        <div class="certs-block-title">
+          <div class="certs-block-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2">
+              <path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/>
+              <path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/>
+            </svg>
+          </div>
+          Languages
+        </div>
+        <button class="btn-add-cert" onclick="openLangModal()">+ Add</button>
+      </div>
+      <div id="langList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+  <p class="section-eyebrow">Background</p>
+  <h2 class="section-heading">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm <strong>Aditya Dhafa</strong>, a Robotics &amp; Artificial Intelligence student at Universitas Airlangga.
+        My passion lives at the boundary of machines and intelligence — making robots that can see, understand, and act.
+      </p>
+      <p>
+        Right now I'm in exploration mode: diving deep into <strong>AI/ML Engineering</strong> and <strong>Perception Engineering</strong> —
+        from training deep learning models to building real-time vision pipelines.
+      </p>
+      <p>
+        The goal? Land a role at a multinational tech company or pursue a <strong>Master's at Carnegie Mellon University</strong> (MS in Machine Learning).
+        Every project I build is a step toward that.
+      </p>
+    </div>
+    <div class="about-goals">
+      <div class="goal-card">
+        <h4>Short term</h4>
+        <p>Build strong project portfolio. Explore AI/ML &amp; Perception engineering domains.</p>
+      </div>
+      <div class="goal-card">
+        <h4>International internship</h4>
+        <p>Gain real industry experience at a multinational tech company abroad.</p>
+      </div>
+      <div class="goal-card">
+        <h4>Carnegie Mellon University</h4>
+        <p>MS in Machine Learning — one of the top programs in the world for what I want to do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-card">
+    <div>
+      <h2>Let's connect.</h2>
+      <p>Open to internships, collaborations, and good conversations about AI.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:your@email.com" class="contact-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="1" y="3" width="14" height="10" rx="2"/>
+          <polyline points="1,3 8,9 15,3"/>
+        </svg>
+        Email
+      </a>
+      <a href="https://github.com/" target="_blank" class="contact-link">
+        <svg viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com/" target="_blank" class="contact-link">
+        <svg viewBox="0 0 16 16" fill="currentColor">
+          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built by <span>Aditya Dhafa P.</span> &mdash; Surabaya, Indonesia &mdash; <span id="year"></span></p>
+</footer>
+
+<!-- CERT MODAL -->
+<div class="modal-overlay" id="certModalOverlay" onclick="if(event.target===this)closeCertModal()">
+  <div class="modal" style="max-width:460px">
+    <div class="modal-header">
+      <h3 class="modal-title" id="certModalTitle">Add Certification</h3>
+      <button class="modal-close" onclick="closeCertModal()">×</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="certName">Certification Name <span>*</span></label>
+      <input class="form-input" id="certName" type="text" placeholder="e.g. IELTS Academic / Deep Learning Specialization">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="certIssuer">Issuer / Platform</label>
+      <input class="form-input" id="certIssuer" type="text" placeholder="e.g. IDP / Coursera / Google">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="certScore">Score / Grade</label>
+        <input class="form-input" id="certScore" type="text" placeholder="e.g. 7.5 / 920 / Pass">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="certYear">Year</label>
+        <input class="form-input" id="certYear" type="number" placeholder="2025" min="2000" max="2099">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeCertModal()">Cancel</button>
+      <button class="btn-save" onclick="saveCert()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- LANG MODAL -->
+<div class="modal-overlay" id="langModalOverlay" onclick="if(event.target===this)closeLangModal()">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-header">
+      <h3 class="modal-title" id="langModalTitle">Add Language</h3>
+      <button class="modal-close" onclick="closeLangModal()">×</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="langName">Language <span>*</span></label>
+      <input class="form-input" id="langName" type="text" placeholder="e.g. English / Indonesian / Japanese">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="langLevel">Proficiency Level <span>*</span></label>
+      <select class="form-input" id="langLevel">
+        <option value="Native">Native</option>
+        <option value="C2 — Mastery">C2 — Mastery</option>
+        <option value="C1 — Advanced">C1 — Advanced</option>
+        <option value="B2 — Upper Intermediate">B2 — Upper Intermediate</option>
+        <option value="B1 — Intermediate">B1 — Intermediate</option>
+        <option value="A2 — Elementary">A2 — Elementary</option>
+        <option value="A1 — Beginner">A1 — Beginner</option>
+        <option value="Learning">Currently Learning</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="langNote">Note (optional)</label>
+      <input class="form-input" id="langNote" type="text" placeholder="e.g. IELTS 7.5 / Daily use / Target B2">
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeLangModal()">Cancel</button>
+      <button class="btn-save" onclick="saveLang()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- SKILL DETAIL MODAL -->
+<div class="modal-overlay" id="skillDetailOverlay" onclick="if(event.target===this)closeSkillDetail()">
+  <div class="modal skill-detail-modal">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="modal-title" id="skillDetailName" style="margin:0"></h3>
+      </div>
+      <button class="modal-close" onclick="closeSkillDetail()">×</button>
+    </div>
+
+    <!-- Resources -->
+    <div class="detail-section">
+      <div class="detail-section-title">
+        📚 Learning Resources
+        <button class="btn-add-cert" onclick="openResourceModal()">+ Add</button>
+      </div>
+      <div id="detailResourcesList"></div>
+    </div>
+
+    <hr class="detail-divider">
+
+    <!-- Applied In -->
+    <div class="detail-section">
+      <div class="detail-section-title">
+        🔧 Applied In
+        <button class="btn-add-cert" onclick="openAppliedModal()">+ Add</button>
+      </div>
+      <div id="detailAppliedList"></div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-fill" onclick="closeSkillDetail()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESOURCE MODAL -->
+<div class="modal-overlay" id="resourceModalOverlay" onclick="if(event.target===this)closeResourceModal()">
+  <div class="modal" style="max-width:460px">
+    <div class="modal-header">
+      <h3 class="modal-title" id="resModalTitle">Add Learning Resource</h3>
+      <button class="modal-close" onclick="closeResourceModal()">×</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="resName">Title <span>*</span></label>
+      <input class="form-input" id="resName" type="text" placeholder="e.g. Python for Data Analysis / learncpp.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="resAuthor">Author (optional)</label>
+      <input class="form-input" id="resAuthor" type="text" placeholder="e.g. Wes McKinney">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="resType">Type</label>
+        <select class="form-input" id="resType">
+          <option value="book">📖 Book</option>
+          <option value="website">🌐 Website / Docs</option>
+          <option value="course">🎓 Course</option>
+          <option value="other">📄 Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="resUrl">URL (optional)</label>
+        <input class="form-input" id="resUrl" type="url" placeholder="https://...">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeResourceModal()">Cancel</button>
+      <button class="btn-save" onclick="saveResource()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- APPLIED IN MODAL -->
+<div class="modal-overlay" id="appliedModalOverlay" onclick="if(event.target===this)closeAppliedModal()">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-header">
+      <h3 class="modal-title">Link to Project / Context</h3>
+      <button class="modal-close" onclick="closeAppliedModal()">×</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="appliedName">Project / Context Name <span>*</span></label>
+      <input class="form-input" id="appliedName" type="text" list="projectSuggestions" placeholder="e.g. Real-time Object Detection">
+      <datalist id="projectSuggestions"></datalist>
+      <p class="form-hint">Start typing — your existing projects will appear as suggestions.</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="appliedUrl">Link (optional)</label>
+      <input class="form-input" id="appliedUrl" type="url" placeholder="GitHub / demo URL">
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeAppliedModal()">Cancel</button>
+      <button class="btn-save" onclick="saveApplied()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- SKILL MODAL -->
+<div class="modal-overlay" id="skillModalOverlay" onclick="if(event.target===this)closeSkillModal()">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-header">
+      <h3 class="modal-title">Add Skill</h3>
+      <button class="modal-close" onclick="closeSkillModal()">×</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="skillName">Skill / Tool Name <span>*</span></label>
+      <input class="form-input" id="skillName" type="text" placeholder="e.g. PyTorch, ROS2, OpenCV...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Type</label>
+      <select class="form-input" id="skillFeatured">
+        <option value="0">Regular</option>
+        <option value="1">Featured (highlighted orange)</option>
+      </select>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeSkillModal()">Cancel</button>
+      <button class="btn-save" onclick="saveSkill()">Add Skill</button>
+    </div>
+  </div>
+</div>
+
+<!-- LEADERSHIP MODAL -->
+<div class="modal-overlay" id="leadModalOverlay" onclick="if(event.target===this)closeLeadModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title" id="leadModalTitle">Add Entry</h3>
+      <button class="modal-close" onclick="closeLeadModal()">×</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="leadRole">Role / Position <span>*</span></label>
+      <input class="form-input" id="leadRole" type="text" placeholder="e.g. Head of Technology Division">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="leadOrg">Organization <span>*</span></label>
+      <input class="form-input" id="leadOrg" type="text" placeholder="e.g. Himpunan Mahasiswa Teknik, Unair">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="leadStart">Start</label>
+        <input class="form-input" id="leadStart" type="text" placeholder="e.g. Aug 2024">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="leadEnd">End</label>
+        <input class="form-input" id="leadEnd" type="text" placeholder="e.g. Jul 2025 / Present">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="leadImpact">What you did / impact <span>*</span></label>
+      <textarea class="form-textarea" id="leadImpact" placeholder="Focus on what you built, led, or achieved. e.g. Led a team of 6 to build an autonomous navigation system for campus robotics competition."></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeLeadModal()">Cancel</button>
+      <button class="btn-save" onclick="saveLead()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- PLATFORM EDIT MODAL (real) -->
+<div class="modal-overlay" id="platformModalOverlay" onclick="handlePlatformOverlayClick(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title" id="platformModalTitle">Edit Stats</h3>
+      <button class="modal-close" onclick="closePlatformModal()">×</button>
+    </div>
+    <div id="platformModalFields"></div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closePlatformModal()">Cancel</button>
+      <button class="btn-save" onclick="savePlatform()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- AWARD MODAL -->
+<div class="modal-overlay" id="awardModalOverlay" onclick="handleAwardOverlayClick(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title" id="awardModalTitle">Add Award / Event</h3>
+      <button class="modal-close" onclick="closeAwardModal()">×</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="awardName">Event / Award Name <span>*</span></label>
+      <input class="form-input" id="awardName" type="text" placeholder="e.g. Gemastik XVII — Competitive Programming">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="awardOrg">Organizer</label>
+        <input class="form-input" id="awardOrg" type="text" placeholder="e.g. Kemdikbud / Kaggle">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="awardYear">Year <span>*</span></label>
+        <input class="form-input" id="awardYear" type="number" placeholder="2025" min="2000" max="2099">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="awardResult">Result <span>*</span></label>
+      <input class="form-input" id="awardResult" type="text" placeholder="e.g. 1st Place / Finalist / Top 10% / Participant">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="awardResultType">Result type (for badge color)</label>
+      <select class="form-input" id="awardResultType">
+        <option value="winner">Winner / Top finish</option>
+        <option value="finalist">Finalist / Runner-up</option>
+        <option value="participant">Participant</option>
+      </select>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeAwardModal()">Cancel</button>
+      <button class="btn-save" onclick="saveAward()">Save</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modalTitle">Add Project</h3>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="projTitle">Project Title <span>*</span></label>
+      <input class="form-input" id="projTitle" type="text" placeholder="e.g. Real-time Object Detection with YOLOv8">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="projDesc">Description <span>*</span></label>
+      <textarea class="form-textarea" id="projDesc" placeholder="What problem does it solve? What's interesting about it?"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="projTags">Tech Stack <span>*</span></label>
+      <input class="form-input" id="projTags" type="text" placeholder="Python, PyTorch, OpenCV, ROS2 (comma-separated)">
+      <p class="form-hint">Separate each technology with a comma.</p>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="projGithub">GitHub URL</label>
+        <input class="form-input" id="projGithub" type="url" placeholder="https://github.com/...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="projDemo">Demo URL</label>
+        <input class="form-input" id="projDemo" type="url" placeholder="https://...">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="projPaper">Paper URL <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+      <input class="form-input" id="projPaper" type="url" placeholder="https://arxiv.org/... or any paper link">
+      <p class="form-hint">Kalau project ini punya paper, isi di sini — akan muncul link "Read Paper" di card.</p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Media (Image or Video)</label>
+      <div class="media-upload-area" onclick="document.getElementById('mediaFileInput').click()">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21,15 16,10 5,21"/>
+        </svg>
+        <strong>Click to upload image or video</strong>
+        <p>JPG, PNG, GIF, MP4, WebM — max 20MB</p>
+      </div>
+      <input type="file" id="mediaFileInput" accept="image/*,video/*" onchange="handleMediaUpload(event)">
+      <div class="media-preview" id="mediaPreview"></div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="saveProject()">Save Project</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ─── STATE ───
+  let projects = JSON.parse(localStorage.getItem('adp_projects') || '[]');
+  let editingId = null;
+  let currentMediaData = null;
+  let currentMediaType = null;
+
+  // ─── RENDER ───
+  function render() {
+    const grid = document.getElementById('projectsGrid');
+    document.getElementById('stat-projects').textContent = projects.length;
+
+    if (projects.length === 0) {
+      grid.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>No projects yet</h3>
+          <p>Hit "Add Project" to showcase your first build!</p>
+          <button class="btn-fill" onclick="openModal()">+ Add your first project</button>
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = projects.map(p => `
+      <div class="project-card fade-in">
+        <div class="project-media">
+          ${p.media ? (
+            p.mediaType === 'video'
+              ? `<video src="${p.media}" autoplay muted loop playsinline></video>`
+              : `<img src="${p.media}" alt="${escHtml(p.title)}">`
+          ) : `
+            <div class="project-media-placeholder">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="1.2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/>
+              </svg>
+              <span>No media added</span>
+            </div>`}
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            ${(p.tags||[]).slice(0,4).map(t => `<span class="project-tag">${escHtml(t.trim())}</span>`).join('')}
+          </div>
+          <div class="project-title">${escHtml(p.title)}</div>
+          <div class="project-desc">${escHtml(p.desc)}</div>
+          <div class="project-links">
+            ${p.github ? `<a href="${escHtml(p.github)}" target="_blank" class="project-link">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              GitHub
+            </a>` : ''}
+            ${p.demo ? `<a href="${escHtml(p.demo)}" target="_blank" class="project-link">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="8" y2="8"/></svg>
+              Demo
+            </a>` : ''}
+            ${p.paper ? `<a href="${escHtml(p.paper)}" target="_blank" class="project-link">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l4 4v8a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M9 2v4h4"/></svg>
+              Read Paper
+            </a>` : ''}
+          </div>
+        </div>
+        <div class="project-actions">
+          <button class="btn-edit-sm" onclick="editProject('${p.id}')">Edit</button>
+          <button class="btn-delete-sm" onclick="deleteProject('${p.id}')">Delete</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ─── MODAL ───
+  function openModal(id = null) {
+    editingId = id;
+    currentMediaData = null;
+    currentMediaType = null;
+    document.getElementById('mediaPreview').innerHTML = '';
+    document.getElementById('mediaFileInput').value = '';
+
+    if (id) {
+      const p = projects.find(x => x.id === id);
+      document.getElementById('modalTitle').textContent = 'Edit Project';
+      document.getElementById('projTitle').value = p.title;
+      document.getElementById('projDesc').value = p.desc;
+      document.getElementById('projTags').value = (p.tags||[]).join(', ');
+      document.getElementById('projGithub').value = p.github || '';
+      document.getElementById('projDemo').value = p.demo || '';
+      document.getElementById('projPaper').value = p.paper || '';
+      if (p.media) {
+        currentMediaData = p.media;
+        currentMediaType = p.mediaType;
+        showMediaPreview(p.media, p.mediaType);
+      }
+    } else {
+      document.getElementById('modalTitle').textContent = 'Add Project';
+      ['projTitle','projDesc','projTags','projGithub','projDemo','projPaper'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+    }
+    document.getElementById('modalOverlay').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    editingId = null;
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  function editProject(id) { openModal(id); }
+
+  function deleteProject(id) {
+    if (confirm('Delete this project?')) {
+      projects = projects.filter(p => p.id !== id);
+      save();
+    }
+  }
+
+  // ─── MEDIA ───
+  function handleMediaUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (file.size > 20 * 1024 * 1024) { alert('File too large. Max 20MB.'); return; }
+    const reader = new FileReader();
+    reader.onload = ev => {
+      currentMediaData = ev.target.result;
+      currentMediaType = file.type.startsWith('video') ? 'video' : 'image';
+      showMediaPreview(currentMediaData, currentMediaType);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function showMediaPreview(src, type) {
+    const preview = document.getElementById('mediaPreview');
+    preview.innerHTML = type === 'video'
+      ? `<video src="${src}" controls style="max-width:100%;border-radius:8px;max-height:160px;margin-top:8px;"></video>`
+      : `<img src="${src}" style="max-width:100%;border-radius:8px;max-height:160px;margin-top:8px;object-fit:cover;">`;
+  }
+
+  // ─── SAVE ───
+  function saveProject() {
+    const title = document.getElementById('projTitle').value.trim();
+    const desc = document.getElementById('projDesc').value.trim();
+    const tagsRaw = document.getElementById('projTags').value.trim();
+    if (!title || !desc || !tagsRaw) { alert('Please fill in title, description, and tech stack.'); return; }
+
+    const proj = {
+      id: editingId || Date.now().toString(),
+      title,
+      desc,
+      tags: tagsRaw.split(',').map(t => t.trim()).filter(Boolean),
+      github: document.getElementById('projGithub').value.trim(),
+      demo: document.getElementById('projDemo').value.trim(),
+      paper: document.getElementById('projPaper').value.trim(),
+      media: currentMediaData,
+      mediaType: currentMediaType,
+    };
+
+    if (editingId) {
+      projects = projects.map(p => p.id === editingId ? proj : p);
+    } else {
+      projects.push(proj);
+    }
+    save();
+    closeModal();
+  }
+
+  function save() {
+    localStorage.setItem('adp_projects', JSON.stringify(projects));
+    render();
+  }
+
+  function escHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // ─── SKILLS STATE ───
+  const defaultSkills = [
+    {id:'s1',name:'Python',featured:true},{id:'s2',name:'PyTorch',featured:true},
+    {id:'s3',name:'Computer Vision',featured:true},{id:'s4',name:'ROS2',featured:true},
+    {id:'s5',name:'OpenCV',featured:false},{id:'s6',name:'NumPy / Pandas',featured:false},
+    {id:'s7',name:'Scikit-learn',featured:false},{id:'s8',name:'TensorFlow',featured:false},
+    {id:'s9',name:'Linux',featured:false},{id:'s10',name:'Git / GitHub',featured:false},
+    {id:'s11',name:'C++',featured:false},{id:'s12',name:'SLAM',featured:false},
+    {id:'s13',name:'Deep Learning',featured:false},{id:'s14',name:'Sensor Fusion',featured:false},
+  ];
+  let skills = JSON.parse(localStorage.getItem('adp_skills') || JSON.stringify(defaultSkills));
+
+  function renderSkills() {
+    const grid = document.getElementById('skillsGrid');
+    grid.innerHTML = skills.map(s => {
+      const detail = skillDetails[s.id] || {};
+      const hasDetail = (detail.resources && detail.resources.length > 0) || (detail.applied && detail.applied.length > 0);
+      return `
+      <div class="skill-pill-wrap">
+        <span class="skill-pill${s.featured?' featured':''} skill-clickable" onclick="openSkillDetail('${s.id}')" title="Click to see learning resources">
+          ${escHtml(s.name)}${hasDetail ? ' <span style="font-size:9px;opacity:0.6">●</span>' : ''}
+        </span>
+        <button class="skill-pill-del" onclick="event.stopPropagation();deleteSkill('${s.id}')" title="Remove">×</button>
+      </div>`;
+    }).join('');
+  }
+
+  function openSkillModal() {
+    document.getElementById('skillName').value = '';
+    document.getElementById('skillFeatured').value = '0';
+    document.getElementById('skillModalOverlay').classList.add('open');
+    setTimeout(() => document.getElementById('skillName').focus(), 100);
+  }
+  function closeSkillModal() { document.getElementById('skillModalOverlay').classList.remove('open'); }
+  function saveSkill() {
+    const name = document.getElementById('skillName').value.trim();
+    if (!name) { alert('Please enter a skill name.'); return; }
+    skills.push({ id: Date.now().toString(), name, featured: document.getElementById('skillFeatured').value === '1' });
+    localStorage.setItem('adp_skills', JSON.stringify(skills));
+    renderSkills();
+    closeSkillModal();
+  }
+  function deleteSkill(id) {
+    skills = skills.filter(s => s.id !== id);
+    delete skillDetails[id];
+    localStorage.setItem('adp_skills', JSON.stringify(skills));
+    localStorage.setItem('adp_skill_details', JSON.stringify(skillDetails));
+    renderSkills();
+  }
+
+  // ─── SKILL DETAIL ───
+  let skillDetails = JSON.parse(localStorage.getItem('adp_skill_details') || '{}');
+  let activeSkillId = null;
+  let editingResourceId = null;
+
+  function openSkillDetail(skillId) {
+    activeSkillId = skillId;
+    const skill = skills.find(s => s.id === skillId);
+    const detail = skillDetails[skillId] || { resources: [], applied: [] };
+    if (!detail.resources) detail.resources = [];
+    if (!detail.applied) detail.applied = [];
+
+    document.getElementById('skillDetailName').textContent = skill.name;
+    renderDetailResources(detail);
+    renderDetailApplied(detail);
+    document.getElementById('skillDetailOverlay').classList.add('open');
+  }
+  function closeSkillDetail() {
+    document.getElementById('skillDetailOverlay').classList.remove('open');
+    activeSkillId = null;
+  }
+
+  function renderDetailResources(detail) {
+    const el = document.getElementById('detailResourcesList');
+    if (!detail.resources || detail.resources.length === 0) {
+      el.innerHTML = `<div class="detail-empty">No resources added yet — add books, websites, courses, etc.</div>`;
+      return;
+    }
+    el.innerHTML = detail.resources.map(r => `
+      <div class="detail-resource-row">
+        <div class="detail-resource-icon">${r.type === 'book' ? '📖' : r.type === 'website' ? '🌐' : r.type === 'course' ? '🎓' : '📄'}</div>
+        <div class="detail-resource-info">
+          <div class="detail-resource-name">${escHtml(r.name)}</div>
+          ${r.author ? `<div class="detail-resource-meta">by ${escHtml(r.author)}</div>` : ''}
+          ${r.url ? `<a href="${escHtml(r.url)}" target="_blank" class="detail-resource-link">↗ Open</a>` : ''}
+        </div>
+        <div class="cert-actions">
+          <button class="cert-btn" onclick="editResource('${r.id}')">Edit</button>
+          <button class="cert-btn del" onclick="deleteResource('${r.id}')">Del</button>
+        </div>
+      </div>`).join('');
+  }
+
+  function renderDetailApplied(detail) {
+    const el = document.getElementById('detailAppliedList');
+    if (!detail.applied || detail.applied.length === 0) {
+      el.innerHTML = `<div class="detail-empty">Not linked to any project yet.</div>`;
+      return;
+    }
+    el.innerHTML = detail.applied.map(a => `
+      <div class="detail-applied-row">
+        <span class="detail-applied-dot"></span>
+        <span class="detail-applied-name">${escHtml(a.name)}</span>
+        ${a.url ? `<a href="${escHtml(a.url)}" target="_blank" class="detail-resource-link" style="margin-left:auto">↗</a>` : ''}
+        <button class="cert-btn del" onclick="deleteApplied('${a.id}')" style="flex-shrink:0">Del</button>
+      </div>`).join('');
+  }
+
+  function saveSkillDetails() {
+    localStorage.setItem('adp_skill_details', JSON.stringify(skillDetails));
+    renderSkills();
+  }
+
+  // resource CRUD
+  function openResourceModal(id = null) {
+    editingResourceId = id;
+    if (id) {
+      const detail = skillDetails[activeSkillId];
+      const r = detail.resources.find(x => x.id === id);
+      document.getElementById('resModalTitle').textContent = 'Edit Resource';
+      document.getElementById('resName').value = r.name;
+      document.getElementById('resAuthor').value = r.author || '';
+      document.getElementById('resType').value = r.type || 'book';
+      document.getElementById('resUrl').value = r.url || '';
+    } else {
+      document.getElementById('resModalTitle').textContent = 'Add Learning Resource';
+      ['resName','resAuthor','resUrl'].forEach(i => document.getElementById(i).value = '');
+      document.getElementById('resType').value = 'book';
+    }
+    document.getElementById('resourceModalOverlay').classList.add('open');
+  }
+  function closeResourceModal() { document.getElementById('resourceModalOverlay').classList.remove('open'); editingResourceId = null; }
+  function editResource(id) { openResourceModal(id); }
+  function deleteResource(id) {
+    if (!confirm('Remove this resource?')) return;
+    const detail = skillDetails[activeSkillId] || { resources: [], applied: [] };
+    detail.resources = detail.resources.filter(r => r.id !== id);
+    skillDetails[activeSkillId] = detail;
+    saveSkillDetails();
+    renderDetailResources(detail);
+  }
+  function saveResource() {
+    const name = document.getElementById('resName').value.trim();
+    if (!name) { alert('Please enter a resource name.'); return; }
+    const detail = skillDetails[activeSkillId] || { resources: [], applied: [] };
+    if (!detail.resources) detail.resources = [];
+    const entry = {
+      id: editingResourceId || Date.now().toString(),
+      name, author: document.getElementById('resAuthor').value.trim(),
+      type: document.getElementById('resType').value,
+      url: document.getElementById('resUrl').value.trim(),
+    };
+    if (editingResourceId) { detail.resources = detail.resources.map(r => r.id === editingResourceId ? entry : r); }
+    else { detail.resources.push(entry); }
+    skillDetails[activeSkillId] = detail;
+    saveSkillDetails();
+    renderDetailResources(detail);
+    closeResourceModal();
+  }
+
+  // applied CRUD
+  function openAppliedModal() {
+    document.getElementById('appliedName').value = '';
+    document.getElementById('appliedUrl').value = '';
+    // pre-fill with existing project titles as datalist
+    const dl = document.getElementById('projectSuggestions');
+    dl.innerHTML = projects.map(p => `<option value="${escHtml(p.title)}">`).join('');
+    document.getElementById('appliedModalOverlay').classList.add('open');
+  }
+  function closeAppliedModal() { document.getElementById('appliedModalOverlay').classList.remove('open'); }
+  function deleteApplied(id) {
+    const detail = skillDetails[activeSkillId] || { resources: [], applied: [] };
+    detail.applied = detail.applied.filter(a => a.id !== id);
+    skillDetails[activeSkillId] = detail;
+    saveSkillDetails();
+    renderDetailApplied(detail);
+  }
+  function saveApplied() {
+    const name = document.getElementById('appliedName').value.trim();
+    if (!name) { alert('Please enter a project/context name.'); return; }
+    const detail = skillDetails[activeSkillId] || { resources: [], applied: [] };
+    if (!detail.applied) detail.applied = [];
+    detail.applied.push({
+      id: Date.now().toString(),
+      name, url: document.getElementById('appliedUrl').value.trim(),
+    });
+    skillDetails[activeSkillId] = detail;
+    saveSkillDetails();
+    renderDetailApplied(detail);
+    closeAppliedModal();
+  }
+
+
+
+  // ─── LEADERSHIP STATE ───
+  let leadership = JSON.parse(localStorage.getItem('adp_leadership') || '[]');
+  let editingLeadId = null;
+
+  function renderLeadership() {
+    const el = document.getElementById('leadershipList');
+    if (leadership.length === 0) {
+      el.innerHTML = `
+        <div class="lead-empty">
+          <div class="empty-icon" style="margin:0 auto 1rem">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>Nothing here yet</h3>
+          <p>Organisasi, kepanitiaan, lomba tim — semua bisa masuk sini. Bismillah, mulai aja dulu!</p>
+          <button class="btn-fill" onclick="openLeadModal()">+ Add first entry</button>
+        </div>`;
+      return;
+    }
+    el.innerHTML = `<div class="leadership-list">${leadership.map(l => `
+      <div class="lead-card fade-in">
+        <div class="lead-period">${escHtml(l.start||'')}${l.end?' — '+escHtml(l.end):''}</div>
+        <div class="lead-body">
+          <div class="lead-role">${escHtml(l.role)}</div>
+          <div class="lead-org">${escHtml(l.org)}</div>
+          <div class="lead-impact">${escHtml(l.impact)}</div>
+        </div>
+        <div class="lead-actions">
+          <button class="btn-edit-sm" onclick="editLead('${l.id}')">Edit</button>
+          <button class="btn-delete-sm" onclick="deleteLead('${l.id}')">Del</button>
+        </div>
+      </div>`).join('')}</div>`;
+  }
+
+  function openLeadModal(id = null) {
+    editingLeadId = id;
+    if (id) {
+      const l = leadership.find(x => x.id === id);
+      document.getElementById('leadModalTitle').textContent = 'Edit Entry';
+      document.getElementById('leadRole').value = l.role;
+      document.getElementById('leadOrg').value = l.org;
+      document.getElementById('leadStart').value = l.start || '';
+      document.getElementById('leadEnd').value = l.end || '';
+      document.getElementById('leadImpact').value = l.impact;
+    } else {
+      document.getElementById('leadModalTitle').textContent = 'Add Entry';
+      ['leadRole','leadOrg','leadStart','leadEnd','leadImpact'].forEach(i => document.getElementById(i).value = '');
+    }
+    document.getElementById('leadModalOverlay').classList.add('open');
+  }
+  function closeLeadModal() { document.getElementById('leadModalOverlay').classList.remove('open'); editingLeadId = null; }
+  function editLead(id) { openLeadModal(id); }
+  function deleteLead(id) {
+    if (confirm('Delete this entry?')) {
+      leadership = leadership.filter(l => l.id !== id);
+      localStorage.setItem('adp_leadership', JSON.stringify(leadership));
+      renderLeadership();
+    }
+  }
+  function saveLead() {
+    const role = document.getElementById('leadRole').value.trim();
+    const org = document.getElementById('leadOrg').value.trim();
+    const impact = document.getElementById('leadImpact').value.trim();
+    if (!role || !org || !impact) { alert('Please fill in role, organization, and impact.'); return; }
+    const entry = {
+      id: editingLeadId || Date.now().toString(),
+      role, org, impact,
+      start: document.getElementById('leadStart').value.trim(),
+      end: document.getElementById('leadEnd').value.trim(),
+    };
+    if (editingLeadId) {
+      leadership = leadership.map(l => l.id === editingLeadId ? entry : l);
+    } else {
+      leadership.push(entry);
+    }
+    localStorage.setItem('adp_leadership', JSON.stringify(leadership));
+    renderLeadership();
+    closeLeadModal();
+  }
+
+  // ─── ACHIEVEMENTS STATE ───
+  let platforms = JSON.parse(localStorage.getItem('adp_platforms') || JSON.stringify({
+    cf:     { rating: '', rank: '', solved: '', bestRank: '' },
+    kaggle: { tier: '', competitions: '', bestFinish: '', medals: '' },
+    lc:     { solved: '', easyMed: '', hard: '', contestRating: '' }
+  }));
+  let awards = JSON.parse(localStorage.getItem('adp_awards') || '[]');
+  let editingPlatform = null;
+  let editingAwardId = null;
+
+  const platformConfig = {
+    cf: {
+      title: 'Codeforces',
+      fields: [
+        { key: 'rating',   label: 'Current Rating',    placeholder: 'e.g. 1200' },
+        { key: 'rank',     label: 'Rank',               placeholder: 'e.g. Specialist' },
+        { key: 'solved',   label: 'Problems Solved',    placeholder: 'e.g. 150' },
+        { key: 'bestRank', label: 'Best Contest Rank',  placeholder: 'e.g. #342 / 5000' },
+      ]
+    },
+    kaggle: {
+      title: 'Kaggle',
+      fields: [
+        { key: 'tier',         label: 'Tier',              placeholder: 'e.g. Novice / Contributor' },
+        { key: 'competitions', label: 'Competitions Joined', placeholder: 'e.g. 5' },
+        { key: 'bestFinish',   label: 'Best Finish',        placeholder: 'e.g. Top 12%' },
+        { key: 'medals',       label: 'Medals',             placeholder: 'e.g. 1 Bronze' },
+      ]
+    },
+    lc: {
+      title: 'LeetCode',
+      fields: [
+        { key: 'solved',        label: 'Problems Solved',  placeholder: 'e.g. 200' },
+        { key: 'easyMed',       label: 'Easy + Medium',    placeholder: 'e.g. 160' },
+        { key: 'hard',          label: 'Hard',             placeholder: 'e.g. 40' },
+        { key: 'contestRating', label: 'Contest Rating',   placeholder: 'e.g. 1450' },
+      ]
+    }
+  };
+
+  function renderPlatforms() {
+    ['cf','kaggle','lc'].forEach(key => {
+      const el = document.getElementById(key + '-stats');
+      const data = platforms[key];
+      const cfg = platformConfig[key];
+      const hasData = cfg.fields.some(f => data[f.key]);
+      if (!hasData) {
+        el.innerHTML = `<p class="pstat-empty">No data yet — click "Edit stats" to add</p>`;
+        return;
+      }
+      el.innerHTML = cfg.fields.map(f => data[f.key] ? `
+        <div class="pstat">
+          <span class="pstat-label">${f.label}</span>
+          <span class="pstat-value highlight">${escHtml(data[f.key])}</span>
+        </div>` : '').join('');
+    });
+  }
+
+  function renderAwards() {
+    const list = document.getElementById('awards-list');
+    document.getElementById('awards-count').textContent = awards.length + ' entr' + (awards.length === 1 ? 'y' : 'ies');
+    if (awards.length === 0) {
+      list.innerHTML = `<div class="awards-empty">No awards yet — add your first competition result!</div>`;
+      return;
+    }
+    const sorted = [...awards].sort((a,b) => b.year - a.year);
+    list.innerHTML = sorted.map(a => `
+      <div class="award-row">
+        <span class="award-year">${escHtml(String(a.year))}</span>
+        <div class="award-info">
+          <div class="award-name">${escHtml(a.name)}</div>
+          ${a.org ? `<div class="award-org">${escHtml(a.org)}</div>` : ''}
+        </div>
+        <span class="award-result ${a.resultType}">${escHtml(a.result)}</span>
+        <div class="award-actions">
+          <button class="award-btn" onclick="editAward('${a.id}')">Edit</button>
+          <button class="award-btn del" onclick="deleteAward('${a.id}')">Del</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ─── PLATFORM MODAL ───
+  function openPlatformModal(key) {
+    editingPlatform = key;
+    const cfg = platformConfig[key];
+    const data = platforms[key];
+    document.getElementById('platformModalTitle').textContent = 'Edit ' + cfg.title + ' Stats';
+    document.getElementById('platformModalFields').innerHTML = cfg.fields.map(f => `
+      <div class="form-group">
+        <label class="form-label" for="pf_${f.key}">${f.label}</label>
+        <input class="form-input" id="pf_${f.key}" type="text" placeholder="${f.placeholder}" value="${escHtml(data[f.key] || '')}">
+      </div>`).join('');
+    document.getElementById('platformModalOverlay').classList.add('open');
+  }
+  function closePlatformModal() {
+    document.getElementById('platformModalOverlay').classList.remove('open');
+    editingPlatform = null;
+  }
+  function handlePlatformOverlayClick(e) {
+    if (e.target === document.getElementById('platformModalOverlay')) closePlatformModal();
+  }
+  function savePlatform() {
+    const cfg = platformConfig[editingPlatform];
+    cfg.fields.forEach(f => {
+      platforms[editingPlatform][f.key] = document.getElementById('pf_' + f.key).value.trim();
+    });
+    localStorage.setItem('adp_platforms', JSON.stringify(platforms));
+    renderPlatforms();
+    closePlatformModal();
+  }
+
+  // ─── AWARD MODAL ───
+  function openAwardModal(id = null) {
+    editingAwardId = id;
+    if (id) {
+      const a = awards.find(x => x.id === id);
+      document.getElementById('awardModalTitle').textContent = 'Edit Award / Event';
+      document.getElementById('awardName').value = a.name;
+      document.getElementById('awardOrg').value = a.org || '';
+      document.getElementById('awardYear').value = a.year;
+      document.getElementById('awardResult').value = a.result;
+      document.getElementById('awardResultType').value = a.resultType;
+    } else {
+      document.getElementById('awardModalTitle').textContent = 'Add Award / Event';
+      ['awardName','awardOrg','awardResult'].forEach(i => document.getElementById(i).value = '');
+      document.getElementById('awardYear').value = new Date().getFullYear();
+      document.getElementById('awardResultType').value = 'participant';
+    }
+    document.getElementById('awardModalOverlay').classList.add('open');
+  }
+  function closeAwardModal() {
+    document.getElementById('awardModalOverlay').classList.remove('open');
+    editingAwardId = null;
+  }
+  function handleAwardOverlayClick(e) {
+    if (e.target === document.getElementById('awardModalOverlay')) closeAwardModal();
+  }
+  function editAward(id) { openAwardModal(id); }
+  function deleteAward(id) {
+    if (confirm('Delete this entry?')) {
+      awards = awards.filter(a => a.id !== id);
+      localStorage.setItem('adp_awards', JSON.stringify(awards));
+      renderAwards();
+    }
+  }
+  function saveAward() {
+    const name = document.getElementById('awardName').value.trim();
+    const year = document.getElementById('awardYear').value.trim();
+    const result = document.getElementById('awardResult').value.trim();
+    if (!name || !year || !result) { alert('Please fill in name, year, and result.'); return; }
+    const entry = {
+      id: editingAwardId || Date.now().toString(),
+      name, org: document.getElementById('awardOrg').value.trim(),
+      year: parseInt(year),
+      result,
+      resultType: document.getElementById('awardResultType').value,
+    };
+    if (editingAwardId) {
+      awards = awards.map(a => a.id === editingAwardId ? entry : a);
+    } else {
+      awards.push(entry);
+    }
+    localStorage.setItem('adp_awards', JSON.stringify(awards));
+    renderAwards();
+    closeAwardModal();
+  }
+
+  // ─── CERTIFICATIONS STATE ───
+  let certs = JSON.parse(localStorage.getItem('adp_certs') || '[]');
+  let langs = JSON.parse(localStorage.getItem('adp_langs') || JSON.stringify([
+    { id: 'l1', name: 'Indonesian', level: 'Native', note: '', pct: 100 },
+    { id: 'l2', name: 'English', level: 'Learning', note: 'Target: IELTS 7.0+', pct: 30 },
+  ]));
+  let editingCertId = null;
+  let editingLangId = null;
+
+  const langPct = {
+    'Native': 100, 'C2 — Mastery': 95, 'C1 — Advanced': 82,
+    'B2 — Upper Intermediate': 68, 'B1 — Intermediate': 52,
+    'A2 — Elementary': 35, 'A1 — Beginner': 20, 'Learning': 15,
+  };
+
+  function renderCerts() {
+    const el = document.getElementById('certList');
+    if (certs.length === 0) {
+      el.innerHTML = `<div class="cert-empty">No certifications yet — add IELTS, Coursera, etc.</div>`;
+      return;
+    }
+    el.innerHTML = certs.map(c => `
+      <div class="cert-row">
+        <div class="cert-dot"></div>
+        <div class="cert-info">
+          <div class="cert-name">${escHtml(c.name)}</div>
+          <div class="cert-meta">${c.issuer ? escHtml(c.issuer) + (c.year ? ' · ' : '') : ''}${c.year ? escHtml(String(c.year)) : ''}</div>
+        </div>
+        ${c.score ? `<div class="cert-score">${escHtml(c.score)}</div>` : ''}
+        <div class="cert-actions">
+          <button class="cert-btn" onclick="editCert('${c.id}')">Edit</button>
+          <button class="cert-btn del" onclick="deleteCert('${c.id}')">Del</button>
+        </div>
+      </div>`).join('');
+  }
+
+  function renderLangs() {
+    const el = document.getElementById('langList');
+    if (langs.length === 0) {
+      el.innerHTML = `<div class="cert-empty">No languages added yet.</div>`;
+      return;
+    }
+    el.innerHTML = langs.map(l => `
+      <div class="lang-row">
+        <div class="lang-top">
+          <span class="lang-name">${escHtml(l.name)}${l.note ? ` <span style="font-size:11px;color:var(--text-3);font-weight:400">· ${escHtml(l.note)}</span>` : ''}</span>
+          <div class="lang-right">
+            <span class="lang-level">${escHtml(l.level)}</span>
+            <button class="cert-btn" onclick="editLang('${l.id}')">Edit</button>
+            <button class="cert-btn del" onclick="deleteLang('${l.id}')">Del</button>
+          </div>
+        </div>
+        <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:${l.pct}%"></div></div>
+      </div>`).join('');
+  }
+
+  function openCertModal(id = null) {
+    editingCertId = id;
+    if (id) {
+      const c = certs.find(x => x.id === id);
+      document.getElementById('certModalTitle').textContent = 'Edit Certification';
+      document.getElementById('certName').value = c.name;
+      document.getElementById('certIssuer').value = c.issuer || '';
+      document.getElementById('certScore').value = c.score || '';
+      document.getElementById('certYear').value = c.year || '';
+    } else {
+      document.getElementById('certModalTitle').textContent = 'Add Certification';
+      ['certName','certIssuer','certScore','certYear'].forEach(i => document.getElementById(i).value = '');
+    }
+    document.getElementById('certModalOverlay').classList.add('open');
+  }
+  function closeCertModal() { document.getElementById('certModalOverlay').classList.remove('open'); editingCertId = null; }
+  function editCert(id) { openCertModal(id); }
+  function deleteCert(id) {
+    if (confirm('Delete this certification?')) {
+      certs = certs.filter(c => c.id !== id);
+      localStorage.setItem('adp_certs', JSON.stringify(certs));
+      renderCerts();
+    }
+  }
+  function saveCert() {
+    const name = document.getElementById('certName').value.trim();
+    if (!name) { alert('Please enter a certification name.'); return; }
+    const entry = {
+      id: editingCertId || Date.now().toString(),
+      name, issuer: document.getElementById('certIssuer').value.trim(),
+      score: document.getElementById('certScore').value.trim(),
+      year: document.getElementById('certYear').value.trim(),
+    };
+    if (editingCertId) { certs = certs.map(c => c.id === editingCertId ? entry : c); }
+    else { certs.push(entry); }
+    localStorage.setItem('adp_certs', JSON.stringify(certs));
+    renderCerts(); closeCertModal();
+  }
+
+  function openLangModal(id = null) {
+    editingLangId = id;
+    if (id) {
+      const l = langs.find(x => x.id === id);
+      document.getElementById('langModalTitle').textContent = 'Edit Language';
+      document.getElementById('langName').value = l.name;
+      document.getElementById('langLevel').value = l.level;
+      document.getElementById('langNote').value = l.note || '';
+    } else {
+      document.getElementById('langModalTitle').textContent = 'Add Language';
+      document.getElementById('langName').value = '';
+      document.getElementById('langLevel').value = 'B1 — Intermediate';
+      document.getElementById('langNote').value = '';
+    }
+    document.getElementById('langModalOverlay').classList.add('open');
+  }
+  function closeLangModal() { document.getElementById('langModalOverlay').classList.remove('open'); editingLangId = null; }
+  function editLang(id) { openLangModal(id); }
+  function deleteLang(id) {
+    if (confirm('Delete this language?')) {
+      langs = langs.filter(l => l.id !== id);
+      localStorage.setItem('adp_langs', JSON.stringify(langs));
+      renderLangs();
+    }
+  }
+  function saveLang() {
+    const name = document.getElementById('langName').value.trim();
+    if (!name) { alert('Please enter a language name.'); return; }
+    const level = document.getElementById('langLevel').value;
+    const entry = {
+      id: editingLangId || Date.now().toString(),
+      name, level, note: document.getElementById('langNote').value.trim(),
+      pct: langPct[level] || 50,
+    };
+    if (editingLangId) { langs = langs.map(l => l.id === editingLangId ? entry : l); }
+    else { langs.push(entry); }
+    localStorage.setItem('adp_langs', JSON.stringify(langs));
+    renderLangs(); closeLangModal();
+  }
+
+  // ─── INIT ───
+  document.getElementById('year').textContent = new Date().getFullYear();
+  render();
+  renderSkills();
+  renderLeadership();
+  renderPlatforms();
+  renderAwards();
+  renderCerts();
+  renderLangs();
+</script>
+</body>
+</html>
