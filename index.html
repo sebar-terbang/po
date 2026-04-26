@@ -221,15 +221,24 @@
     border: 0.5px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+    transition: box-shadow 0.25s, transform 0.2s, border-color 0.25s;
     cursor: pointer;
     display: flex; flex-direction: column;
   }
   .project-card:hover {
     box-shadow: var(--shadow-hover);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     border-color: rgba(232,101,10,0.2);
   }
+  .project-card:hover .project-media img,
+  .project-card:hover .project-media video {
+    transform: scale(1.03);
+  }
+  .project-card.featured-card {
+    border-color: rgba(232,101,10,0.25);
+    box-shadow: 0 0 0 1px rgba(232,101,10,0.1), var(--shadow);
+  }
+
 
   .project-media {
     width: 100%; aspect-ratio: 16/9;
@@ -246,8 +255,39 @@
   .project-media-placeholder svg { opacity: 0.3; }
   .project-media-placeholder span { font-size: 12px; color: var(--text-3); }
 
-  .project-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
+  /* featured pin */
+  .project-media img, .project-media video { transition: transform 0.35s ease; }
+  .featured-pin {
+    position: absolute; top: 10px; left: 10px; z-index: 3;
+    background: rgba(232,101,10,0.88); color: #fff;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 3px 9px; border-radius: 999px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* meta row: status dot + date */
+  .project-meta { display: flex; align-items: center; gap: 6px; margin-bottom: 0.5rem; }
+  .status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .status-dot.completed { background: #1A7A4A; }
+  .status-dot.in-progress { background: #3B5BDB; animation: pulse 1.5s infinite; }
+  .status-dot.ongoing { background: #B45309; }
+  .status-text { font-size: 11px; color: var(--text-3); }
+  .meta-sep { font-size: 10px; color: var(--border-2); }
+  .project-date-inline { font-size: 11px; color: var(--text-3); }
+
+  /* load more */
+  .projects-load-more { text-align: center; margin-top: 2rem; }
+  .btn-load-more {
+    background: none; border: 0.5px solid var(--border-2);
+    border-radius: var(--radius-sm); padding: 10px 28px;
+    font-size: 14px; color: var(--text-2); cursor: pointer;
+    font-family: inherit; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-load-more:hover { border-color: var(--orange); color: var(--orange); }
+
+  .project-body { padding: 1rem 1.2rem 1.2rem; flex: 1; display: flex; flex-direction: column; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.55rem; }
   .project-tag {
     font-size: 11px; font-weight: 500;
     background: var(--orange-light);
@@ -263,11 +303,11 @@
   }
   .project-desc {
     font-size: 14px; color: var(--text-2);
-    line-height: 1.6; margin-bottom: 1rem;
+    line-height: 1.6; margin-bottom: 0.75rem;
     flex: 1;
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
   }
-  .project-links { display: flex; gap: 10px; margin-top: auto; }
+  .project-links { display: flex; gap: 10px; }
   .project-link {
     font-size: 13px; color: var(--text-3);
     text-decoration: none; display: flex; align-items: center; gap: 5px;
@@ -298,6 +338,67 @@
     transition: all 0.2s; margin-left: auto;
   }
   .btn-delete-sm:hover { color: #E24B4A; border-color: rgba(226,75,74,0.3); }
+
+
+  /* ─── EXPERIENCE ─── */
+  .experience-section { margin-bottom: 5rem; }
+  .exp-timeline { position: relative; padding-left: 20px; }
+  .exp-timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 1px; background: linear-gradient(to bottom, var(--orange), transparent);
+  }
+  .exp-item {
+    position: relative; margin-bottom: 1.25rem;
+    background: var(--bg-card); border: 0.5px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem 1.4rem;
+    transition: box-shadow 0.25s, border-color 0.25s;
+  }
+  .exp-item:hover { box-shadow: var(--shadow-hover); border-color: rgba(232,101,10,0.2); }
+  .exp-item::before {
+    content: ''; position: absolute; left: -24px; top: 18px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--orange); border: 2px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--orange);
+  }
+  .exp-header { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 0.75rem; }
+  .exp-logo {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; color: #fff;
+    flex-shrink: 0; overflow: hidden;
+  }
+  .exp-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+  .exp-info { flex: 1; }
+  .exp-role {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px; font-weight: 700; color: var(--text);
+    letter-spacing: -0.01em; margin-bottom: 2px;
+  }
+  .exp-org { font-size: 13px; color: var(--orange); font-weight: 500; margin-bottom: 2px; }
+  .exp-period {
+    font-size: 12px; color: var(--text-3);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .exp-active-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #1A7A4A; animation: pulse 2s infinite;
+    display: inline-block;
+  }
+  .exp-desc { font-size: 14px; color: var(--text-2); line-height: 1.65; margin-bottom: 0.75rem; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .exp-actions { display: flex; gap: 6px; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 0.5px solid var(--border); }
+  .exp-empty {
+    padding: 3rem 2rem; text-align: center;
+    border: 0.5px dashed var(--border-2);
+    border-radius: var(--radius); background: var(--bg-card);
+  }
+  .exp-empty h3 { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .exp-empty p { font-size: 13px; color: var(--text-3); margin-bottom: 1.5rem; }
+
+  @media (max-width: 768px) {
+    .project-card.featured-card { grid-template-columns: 1fr; max-height: unset; }
+    .project-card.featured-card .project-media { aspect-ratio: 16/9; height: auto; }
+  }
 
   .empty-state {
     grid-column: 1/-1;
@@ -673,27 +774,41 @@
   .skill-clickable:hover { background: var(--orange-dim) !important; border-color: rgba(232,101,10,0.4) !important; color: var(--orange) !important; transform: translateY(-1px); transition: all 0.15s; }
 
   /* skill detail modal */
-  .skill-detail-modal { max-width: 540px; }
-  .skill-detail-badge {
-    display: inline-block; background: var(--orange-light);
-    color: var(--orange); font-size: 11px; font-weight: 600;
-    padding: 3px 10px; border-radius: 999px;
-    letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 1.5rem;
+  .skill-detail-modal { max-width: 520px; }
+  .sd-block {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1rem;
   }
-  .detail-section-title {
-    font-size: 11px; font-weight: 600; color: var(--text-3);
-    text-transform: uppercase; letter-spacing: 0.08em;
-    margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center;
+  .sd-block-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.85rem 1.1rem;
+    background: var(--bg-card);
+    border-bottom: 0.5px solid var(--border);
   }
-  .detail-section { margin-bottom: 1.5rem; }
-  .detail-divider { border: none; border-top: 0.5px solid var(--border); margin: 1.25rem 0; }
-  .detail-empty { font-size: 13px; color: var(--text-3); font-style: italic; padding: 0.75rem 0; }
+  .sd-block-label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: var(--text-2);
+    text-transform: uppercase; letter-spacing: 0.07em;
+  }
+  .sd-block-icon {
+    width: 26px; height: 26px; border-radius: 7px;
+    background: var(--orange-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+  }
+  .sd-block-body { padding: 0.25rem 0; }
+  .detail-empty { font-size: 13px; color: var(--text-3); font-style: italic; padding: 0.85rem 1.1rem; }
   .detail-resource-row {
     display: flex; align-items: flex-start; gap: 10px;
-    padding: 0.75rem 0; border-bottom: 0.5px solid var(--border);
+    padding: 0.75rem 1.1rem; border-bottom: 0.5px solid var(--border);
+    transition: background 0.15s;
   }
   .detail-resource-row:last-child { border-bottom: none; }
-  .detail-resource-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .detail-resource-row:hover { background: var(--orange-light); }
+  .detail-resource-icon { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
   .detail-resource-info { flex: 1; }
   .detail-resource-name { font-size: 14px; font-weight: 500; color: var(--text); }
   .detail-resource-meta { font-size: 12px; color: var(--text-3); margin-top: 2px; }
@@ -701,14 +816,13 @@
   .detail-resource-link:hover { text-decoration: underline; }
   .detail-applied-row {
     display: flex; align-items: center; gap: 10px;
-    padding: 0.6rem 0; border-bottom: 0.5px solid var(--border);
+    padding: 0.7rem 1.1rem; border-bottom: 0.5px solid var(--border);
+    transition: background 0.15s;
   }
   .detail-applied-row:last-child { border-bottom: none; }
+  .detail-applied-row:hover { background: var(--orange-light); }
   .detail-applied-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
   .detail-applied-name { font-size: 14px; color: var(--text); flex: 1; }
-
-
-
 
   /* ─── CERTIFICATIONS & LANGUAGES ─── */
   .certs-section { margin-bottom: 5rem; }
@@ -804,6 +918,7 @@
     <ul class="nav-links">
       <li><a href="#projects">Projects</a></li>
       <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#leadership">Leadership</a></li>
       <li><a href="#certifications">Credentials</a></li>
       <li><a href="#about">About</a></li>
@@ -893,7 +1008,7 @@
   <p class="section-eyebrow">Progress</p>
   <h2 class="section-heading">Achievements</h2>
 
-  <div class="ach-platforms">
+  <div class="ach-platforms" style="grid-template-columns:repeat(2,1fr)">
     <!-- Codeforces -->
     <div class="platform-card">
       <div class="platform-header">
@@ -902,7 +1017,10 @@
             <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
           </svg>
         </div>
-        <div class="platform-name">Codeforces</div>
+        <div style="flex:1">
+          <div class="platform-name">Codeforces</div>
+          <a href="#" id="cf-profile-link" target="_blank" style="font-size:11px;color:var(--orange);text-decoration:none;display:none">↗ View Profile</a>
+        </div>
       </div>
       <div class="platform-stats" id="cf-stats"></div>
       <button class="btn-edit-platform" onclick="openPlatformModal('cf')">Edit stats</button>
@@ -916,24 +1034,13 @@
             <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
           </svg>
         </div>
-        <div class="platform-name">Kaggle</div>
+        <div style="flex:1">
+          <div class="platform-name">Kaggle</div>
+          <a href="#" id="kaggle-profile-link" target="_blank" style="font-size:11px;color:var(--orange);text-decoration:none;display:none">↗ View Profile</a>
+        </div>
       </div>
       <div class="platform-stats" id="kaggle-stats"></div>
       <button class="btn-edit-platform" onclick="openPlatformModal('kaggle')">Edit stats</button>
-    </div>
-
-    <!-- LeetCode -->
-    <div class="platform-card">
-      <div class="platform-header">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/>
-          </svg>
-        </div>
-        <div class="platform-name">LeetCode</div>
-      </div>
-      <div class="platform-stats" id="lc-stats"></div>
-      <button class="btn-edit-platform" onclick="openPlatformModal('lc')">Edit stats</button>
     </div>
   </div>
 
@@ -960,6 +1067,23 @@
       </button>
     </div>
   </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="experience-section">
+  <div class="projects-header">
+    <div>
+      <p class="section-eyebrow">Work & Research</p>
+      <h2 class="section-heading">Experience</h2>
+    </div>
+    <button class="btn-add-project" onclick="openExpModal()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+      </svg>
+      Add Entry
+    </button>
+  </div>
+  <div class="exp-timeline" id="expList"></div>
 </section>
 
 <!-- LEADERSHIP -->
@@ -1161,33 +1285,32 @@
 <div class="modal-overlay" id="skillDetailOverlay" onclick="if(event.target===this)closeSkillDetail()">
   <div class="modal skill-detail-modal">
     <div class="modal-header">
-      <div style="display:flex;align-items:center;gap:12px">
-        <div style="width:36px;height:36px;border-radius:10px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <h3 class="modal-title" id="skillDetailName" style="margin:0"></h3>
-      </div>
+      <h3 class="modal-title" id="skillDetailName" style="margin:0"></h3>
       <button class="modal-close" onclick="closeSkillDetail()">×</button>
     </div>
 
     <!-- Resources -->
-    <div class="detail-section">
-      <div class="detail-section-title">
-        📚 Learning Resources
+    <div class="sd-block">
+      <div class="sd-block-header">
+        <div class="sd-block-label">
+          <div class="sd-block-icon">📚</div>
+          Learning Resources
+        </div>
         <button class="btn-add-cert" onclick="openResourceModal()">+ Add</button>
       </div>
-      <div id="detailResourcesList"></div>
+      <div id="detailResourcesList" class="sd-block-body"></div>
     </div>
 
-    <hr class="detail-divider">
-
     <!-- Applied In -->
-    <div class="detail-section">
-      <div class="detail-section-title">
-        🔧 Applied In
+    <div class="sd-block">
+      <div class="sd-block-header">
+        <div class="sd-block-label">
+          <div class="sd-block-icon">🔧</div>
+          Applied In
+        </div>
         <button class="btn-add-cert" onclick="openAppliedModal()">+ Add</button>
       </div>
-      <div id="detailAppliedList"></div>
+      <div id="detailAppliedList" class="sd-block-body"></div>
     </div>
 
     <div class="modal-footer">
@@ -1253,6 +1376,59 @@
     <div class="modal-footer">
       <button class="btn-cancel" onclick="closeAppliedModal()">Cancel</button>
       <button class="btn-save" onclick="saveApplied()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE MODAL -->
+<div class="modal-overlay" id="expModalOverlay" onclick="if(event.target===this)closeExpModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title" id="expModalTitle">Add Experience</h3>
+      <button class="modal-close" onclick="closeExpModal()">×</button>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="expRole">Role / Position <span>*</span></label>
+        <input class="form-input" id="expRole" type="text" placeholder="e.g. AI Research Assistant">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="expType">Type</label>
+        <select class="form-input" id="expType">
+          <option value="internship">Internship</option>
+          <option value="research">Research</option>
+          <option value="freelance">Freelance</option>
+          <option value="parttime">Part-time</option>
+          <option value="fulltime">Full-time</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="expOrg">Company / Institution <span>*</span></label>
+      <input class="form-input" id="expOrg" type="text" placeholder="e.g. Universitas Airlangga — Robotics Lab">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="expStart">Start <span>*</span></label>
+        <input class="form-input" id="expStart" type="text" placeholder="e.g. Aug 2024">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="expEnd">End</label>
+        <input class="form-input" id="expEnd" type="text" placeholder="e.g. Dec 2024 (leave blank if present)">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="expDesc">What you did <span>*</span></label>
+      <textarea class="form-textarea" id="expDesc" placeholder="Describe your role, what you built/researched, and impact. Be specific."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="expTags">Tech Stack <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+      <input class="form-input" id="expTags" type="text" placeholder="Python, PyTorch, ROS2 (comma-separated)">
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeExpModal()">Cancel</button>
+      <button class="btn-save" onclick="saveExp()">Save</button>
     </div>
   </div>
 </div>
@@ -1439,6 +1615,41 @@
       <p class="form-hint">Kalau project ini punya paper, isi di sini — akan muncul link "Read Paper" di card.</p>
     </div>
 
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="projStatus">Status</label>
+        <select class="form-input" id="projStatus">
+          <option value="completed">✅ Completed</option>
+          <option value="in-progress">🔵 In Progress</option>
+          <option value="ongoing">🟡 Ongoing</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="projFeatured">Featured?</label>
+        <select class="form-input" id="projFeatured">
+          <option value="0">No</option>
+          <option value="1">⭐ Yes — pin to top</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="projMonth">Month <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+        <select class="form-input" id="projMonth">
+          <option value="">—</option>
+          <option>Jan</option><option>Feb</option><option>Mar</option>
+          <option>Apr</option><option>May</option><option>Jun</option>
+          <option>Jul</option><option>Aug</option><option>Sep</option>
+          <option>Oct</option><option>Nov</option><option>Dec</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="projYear">Year <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+        <input class="form-input" id="projYear" type="number" placeholder="e.g. 2025" min="2020" max="2099">
+      </div>
+    </div>
+
     <div class="form-group">
       <label class="form-label">Media (Image or Video)</label>
       <div class="media-upload-area" onclick="document.getElementById('mediaFileInput').click()">
@@ -1467,9 +1678,50 @@
   let currentMediaData = null;
   let currentMediaType = null;
 
-  // ─── RENDER ───
-  function render() {
+  // ─── RENDER PROJECTS ───
+  let _showAllProjects = false;
+
+  function buildProjectCard(p) {
+    const isFeatured = p.featured;
+    const dateStr = [p.month, p.year].filter(Boolean).join(' ');
+    const statusLabel = { completed: 'Completed', 'in-progress': 'In Progress', ongoing: 'Ongoing' };
+    return `
+    <div class="project-card${isFeatured ? ' featured-card' : ''} fade-in" onclick="openProjectDetail('${p.id}')">
+      <div class="project-media">
+        ${isFeatured ? `<div class="featured-pin">⭐ Featured</div>` : ''}
+        ${p.media ? (p.mediaType === 'video'
+          ? `<video src="${p.media}" autoplay muted loop playsinline></video>`
+          : `<img src="${p.media}" alt="${escHtml(p.title)}">`)
+          : `<div class="project-media-placeholder">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="1.2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/>
+              </svg>
+              <span>No media</span>
+            </div>`}
+      </div>
+      <div class="project-body">
+        <div class="project-meta">
+          ${p.status ? `<span class="status-dot ${p.status}"></span><span class="status-text">${statusLabel[p.status] || p.status}</span>` : ''}
+          ${p.status && dateStr ? `<span class="meta-sep">·</span>` : ''}
+          ${dateStr ? `<span class="project-date-inline">${escHtml(dateStr)}</span>` : ''}
+        </div>
+        <div class="project-tags">${(p.tags || []).slice(0, 3).map(t => `<span class="project-tag">${escHtml(t.trim())}</span>`).join('')}</div>
+        <div class="project-title">${escHtml(p.title)}</div>
+        <div class="project-desc">${escHtml(p.desc)}</div>
+        ${(p.github || p.demo || p.paper) ? `
+        <div class="project-links" onclick="event.stopPropagation()">
+          ${p.github ? `<a href="${escHtml(p.github)}" target="_blank" class="project-link"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>` : ''}
+          ${p.demo ? `<a href="${escHtml(p.demo)}" target="_blank" class="project-link"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="8" y2="8"/></svg>Demo</a>` : ''}
+          ${p.paper ? `<a href="${escHtml(p.paper)}" target="_blank" class="project-link"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l4 4v8a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M9 2v4h4"/></svg>Read Paper</a>` : ''}
+        </div>` : ''}
+      </div>
+    </div>`;
+  }
+
+  function renderAllProjects() {
+    const LIMIT = 4;
     const grid = document.getElementById('projectsGrid');
+    const lm = document.getElementById('loadMoreWrap');
     document.getElementById('stat-projects').textContent = projects.length;
 
     if (projects.length === 0) {
@@ -1484,45 +1736,33 @@
           <p>Hit "Add Project" to showcase your first build!</p>
           <button class="btn-fill" onclick="openModal()">+ Add your first project</button>
         </div>`;
+      if (lm) lm.innerHTML = '';
       return;
     }
 
-    grid.innerHTML = projects.map(p => `
-      <div class="project-card fade-in" onclick="openProjectDetail('${p.id}')">
-        <div class="project-media">
-          ${p.media ? (
-            p.mediaType === 'video'
-              ? `<video src="${p.media}" autoplay muted loop playsinline></video>`
-              : `<img src="${p.media}" alt="${escHtml(p.title)}">`
-          ) : `
-            <div class="project-media-placeholder">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="1.2">
-                <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/>
-              </svg>
-              <span>No media added</span>
-            </div>`}
-        </div>
-        <div class="project-body">
-          <div class="project-tags">
-            ${(p.tags||[]).slice(0,3).map(t => `<span class="project-tag">${escHtml(t.trim())}</span>`).join('')}
-          </div>
-          <div class="project-title">${escHtml(p.title)}</div>
-          <div class="project-desc">${escHtml(p.desc)}</div>
-          ${(p.github || p.demo || p.paper) ? `
-          <div class="project-links" onclick="event.stopPropagation()">
-            ${p.github ? `<a href="${escHtml(p.github)}" target="_blank" class="project-link">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-              GitHub</a>` : ''}
-            ${p.demo ? `<a href="${escHtml(p.demo)}" target="_blank" class="project-link">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3"/><path d="M10 2h4v4"/><line x1="14" y1="2" x2="8" y2="8"/></svg>
-              Demo</a>` : ''}
-            ${p.paper ? `<a href="${escHtml(p.paper)}" target="_blank" class="project-link" style="color:var(--orange)">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l4 4v8a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M9 2v4h4"/></svg>
-              Read Paper</a>` : ''}
-          </div>` : ''}
-        </div>
-      </div>
-    `).join('');
+    const sorted = [...projects].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+    const visible = _showAllProjects ? sorted : sorted.slice(0, LIMIT);
+    grid.innerHTML = visible.map(buildProjectCard).join('');
+
+    if (!lm) return;
+    if (sorted.length > LIMIT && !_showAllProjects) {
+      lm.innerHTML = `<button class="btn-load-more" onclick="_showAllProjects=true;renderAllProjects()">
+        Show all ${sorted.length} projects
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
+      </button>`;
+    } else if (sorted.length > LIMIT && _showAllProjects) {
+      lm.innerHTML = `<button class="btn-load-more" onclick="_showAllProjects=false;renderAllProjects()">
+        Show less
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="8" x2="14" y2="8"/></svg>
+      </button>`;
+    } else {
+      lm.innerHTML = '';
+    }
+  }
+
+  function save() {
+    localStorage.setItem('adp_projects', JSON.stringify(projects));
+    renderAllProjects();
   }
 
   // ─── PROJECT DETAIL ───
@@ -1603,6 +1843,10 @@
       document.getElementById('projGithub').value = p.github || '';
       document.getElementById('projDemo').value = p.demo || '';
       document.getElementById('projPaper').value = p.paper || '';
+      document.getElementById('projStatus').value = p.status || 'completed';
+      document.getElementById('projFeatured').value = p.featured ? '1' : '0';
+      document.getElementById('projMonth').value = p.month || '';
+      document.getElementById('projYear').value = p.year || '';
       if (p.media) {
         currentMediaData = p.media;
         currentMediaType = p.mediaType;
@@ -1610,9 +1854,12 @@
       }
     } else {
       document.getElementById('modalTitle').textContent = 'Add Project';
-      ['projTitle','projDesc','projTags','projGithub','projDemo','projPaper'].forEach(id => {
+      ['projTitle','projDesc','projTags','projGithub','projDemo','projPaper','projYear'].forEach(id => {
         document.getElementById(id).value = '';
       });
+      document.getElementById('projStatus').value = 'completed';
+      document.getElementById('projFeatured').value = '0';
+      document.getElementById('projMonth').value = '';
     }
     document.getElementById('modalOverlay').classList.add('open');
   }
@@ -1671,6 +1918,10 @@
       github: document.getElementById('projGithub').value.trim(),
       demo: document.getElementById('projDemo').value.trim(),
       paper: document.getElementById('projPaper').value.trim(),
+      status: document.getElementById('projStatus').value,
+      featured: document.getElementById('projFeatured').value === '1',
+      month: document.getElementById('projMonth').value,
+      year: document.getElementById('projYear').value.trim(),
       media: currentMediaData,
       mediaType: currentMediaType,
     };
@@ -1682,11 +1933,6 @@
     }
     save();
     closeModal();
-  }
-
-  function save() {
-    localStorage.setItem('adp_projects', JSON.stringify(projects));
-    render();
   }
 
   function escHtml(str) {
@@ -1756,7 +2002,8 @@
     if (!detail.resources) detail.resources = [];
     if (!detail.applied) detail.applied = [];
 
-    document.getElementById('skillDetailName').textContent = skill.name;
+    const iconBox = `<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--orange-light);margin-right:10px;vertical-align:middle;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>`;
+    document.getElementById('skillDetailName').innerHTML = iconBox + escHtml(skill.name);
     renderDetailResources(detail);
     renderDetailApplied(detail);
     document.getElementById('skillDetailOverlay').classList.add('open');
@@ -1971,11 +2218,110 @@
     closeLeadModal();
   }
 
+  // ─── EXPERIENCE STATE ───
+  let experiences = JSON.parse(localStorage.getItem('adp_experiences') || '[]');
+  let editingExpId = null;
+
+  const expColors = ['#E8650A','#4B50C4','#1A7A8A','#9B5AA0','#3B6D11','#C4423A'];
+  function expColor(name) { return expColors[(name||'').charCodeAt(0) % expColors.length]; }
+  function expInitials(name) {
+    return (name||'').split(/[\s\-\/]+/).filter(w=>w.length>1).slice(0,2).map(w=>w[0].toUpperCase()).join('') || (name||'').slice(0,2).toUpperCase();
+  }
+
+  function renderExperience() {
+    const el = document.getElementById('expList');
+    if (experiences.length === 0) {
+      el.innerHTML = `<div class="exp-empty">
+        <div class="empty-icon" style="margin:0 auto 1rem">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2">
+            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+          </svg>
+        </div>
+        <h3>No experience yet</h3>
+        <p>Internship, research assistant, freelance — semua bisa masuk sini. Bismillah!</p>
+        <button class="btn-fill" onclick="openExpModal()">+ Add first entry</button>
+      </div>`;
+      return;
+    }
+    el.innerHTML = experiences.map(e => {
+      const isPresent = !e.end || e.end.toLowerCase() === 'present' || e.end === '';
+      const periodStr = e.start + (isPresent ? ' — Present' : (e.end ? ' — ' + e.end : ''));
+      const typeLabel = { internship:'Internship', research:'Research', freelance:'Freelance', parttime:'Part-time', fulltime:'Full-time', other:'Other' };
+      return `
+      <div class="exp-item fade-in">
+        <div class="exp-header">
+          <div class="exp-logo" style="background:${expColor(e.org)}">${expInitials(e.org)}</div>
+          <div class="exp-info">
+            <div class="exp-role">${escHtml(e.role)}</div>
+            <div class="exp-org">${escHtml(e.org)}</div>
+            <div class="exp-period">
+              ${isPresent ? `<span class="exp-active-dot"></span>` : ''}
+              ${escHtml(periodStr)}
+              ${e.type ? ` · <span style="color:var(--text-3)">${typeLabel[e.type]||e.type}</span>` : ''}
+            </div>
+          </div>
+        </div>
+        ${e.desc ? `<div class="exp-desc">${escHtml(e.desc)}</div>` : ''}
+        ${(e.tags||[]).length ? `<div class="exp-tags">${e.tags.map(t=>`<span class="project-tag">${escHtml(t.trim())}</span>`).join('')}</div>` : ''}
+        <div class="exp-actions">
+          <button class="btn-edit-sm" onclick="editExp('${e.id}')">Edit</button>
+          <button class="btn-delete-sm" onclick="deleteExp('${e.id}')">Delete</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function openExpModal(id=null) {
+    editingExpId = id;
+    if (id) {
+      const e = experiences.find(x=>x.id===id);
+      document.getElementById('expModalTitle').textContent = 'Edit Experience';
+      document.getElementById('expRole').value = e.role;
+      document.getElementById('expOrg').value = e.org;
+      document.getElementById('expStart').value = e.start||'';
+      document.getElementById('expEnd').value = e.end||'';
+      document.getElementById('expDesc').value = e.desc||'';
+      document.getElementById('expTags').value = (e.tags||[]).join(', ');
+      document.getElementById('expType').value = e.type||'internship';
+    } else {
+      document.getElementById('expModalTitle').textContent = 'Add Experience';
+      ['expRole','expOrg','expStart','expEnd','expDesc','expTags'].forEach(i=>document.getElementById(i).value='');
+      document.getElementById('expType').value = 'internship';
+    }
+    document.getElementById('expModalOverlay').classList.add('open');
+  }
+  function closeExpModal() { document.getElementById('expModalOverlay').classList.remove('open'); editingExpId=null; }
+  function editExp(id) { openExpModal(id); }
+  function deleteExp(id) {
+    if (!confirm('Delete this entry?')) return;
+    experiences = experiences.filter(e=>e.id!==id);
+    localStorage.setItem('adp_experiences', JSON.stringify(experiences));
+    renderExperience();
+  }
+  function saveExp() {
+    const role = document.getElementById('expRole').value.trim();
+    const org = document.getElementById('expOrg').value.trim();
+    const desc = document.getElementById('expDesc').value.trim();
+    if (!role||!org||!desc) { alert('Please fill in role, organization, and description.'); return; }
+    const entry = {
+      id: editingExpId||Date.now().toString(),
+      role, org, desc,
+      start: document.getElementById('expStart').value.trim(),
+      end: document.getElementById('expEnd').value.trim(),
+      type: document.getElementById('expType').value,
+      tags: document.getElementById('expTags').value.split(',').map(t=>t.trim()).filter(Boolean),
+    };
+    if (editingExpId) { experiences = experiences.map(e=>e.id===editingExpId?entry:e); }
+    else { experiences.push(entry); }
+    localStorage.setItem('adp_experiences', JSON.stringify(experiences));
+    renderExperience();
+    closeExpModal();
+  }
+
   // ─── ACHIEVEMENTS STATE ───
   let platforms = JSON.parse(localStorage.getItem('adp_platforms') || JSON.stringify({
-    cf:     { rating: '', rank: '', solved: '', bestRank: '' },
-    kaggle: { tier: '', competitions: '', bestFinish: '', medals: '' },
-    lc:     { solved: '', easyMed: '', hard: '', contestRating: '' }
+    cf:     { rating: '', rank: '', solved: '', bestRank: '', profileUrl: '' },
+    kaggle: { tier: '', competitions: '', bestFinish: '', medals: '', profileUrl: '' },
   }));
   let awards = JSON.parse(localStorage.getItem('adp_awards') || '[]');
   let editingPlatform = null;
@@ -1985,43 +2331,49 @@
     cf: {
       title: 'Codeforces',
       fields: [
-        { key: 'rating',   label: 'Current Rating',    placeholder: 'e.g. 1200' },
-        { key: 'rank',     label: 'Rank',               placeholder: 'e.g. Specialist' },
-        { key: 'solved',   label: 'Problems Solved',    placeholder: 'e.g. 150' },
-        { key: 'bestRank', label: 'Best Contest Rank',  placeholder: 'e.g. #342 / 5000' },
+        { key: 'rating',     label: 'Current Rating',   placeholder: 'e.g. 1200' },
+        { key: 'rank',       label: 'Rank',              placeholder: 'e.g. Specialist' },
+        { key: 'solved',     label: 'Problems Solved',   placeholder: 'e.g. 150' },
+        { key: 'bestRank',   label: 'Best Contest Rank', placeholder: 'e.g. #342 / 5000' },
+        { key: 'profileUrl', label: 'Profile URL',       placeholder: 'https://codeforces.com/profile/...' },
       ]
     },
     kaggle: {
       title: 'Kaggle',
       fields: [
-        { key: 'tier',         label: 'Tier',              placeholder: 'e.g. Novice / Contributor' },
+        { key: 'tier',         label: 'Tier',               placeholder: 'e.g. Novice / Contributor' },
         { key: 'competitions', label: 'Competitions Joined', placeholder: 'e.g. 5' },
-        { key: 'bestFinish',   label: 'Best Finish',        placeholder: 'e.g. Top 12%' },
-        { key: 'medals',       label: 'Medals',             placeholder: 'e.g. 1 Bronze' },
+        { key: 'bestFinish',   label: 'Best Finish',         placeholder: 'e.g. Top 12%' },
+        { key: 'medals',       label: 'Medals',              placeholder: 'e.g. 1 Bronze' },
+        { key: 'profileUrl',   label: 'Profile URL',         placeholder: 'https://kaggle.com/...' },
       ]
     },
-    lc: {
-      title: 'LeetCode',
-      fields: [
-        { key: 'solved',        label: 'Problems Solved',  placeholder: 'e.g. 200' },
-        { key: 'easyMed',       label: 'Easy + Medium',    placeholder: 'e.g. 160' },
-        { key: 'hard',          label: 'Hard',             placeholder: 'e.g. 40' },
-        { key: 'contestRating', label: 'Contest Rating',   placeholder: 'e.g. 1450' },
-      ]
-    }
   };
 
   function renderPlatforms() {
-    ['cf','kaggle','lc'].forEach(key => {
+    ['cf','kaggle'].forEach(key => {
       const el = document.getElementById(key + '-stats');
       const data = platforms[key];
       const cfg = platformConfig[key];
-      const hasData = cfg.fields.some(f => data[f.key]);
+      const statFields = cfg.fields.filter(f => f.key !== 'profileUrl');
+      const hasData = statFields.some(f => data[f.key]);
+
+      // show/hide profile link
+      const profileLink = document.getElementById(key + '-profile-link');
+      if (profileLink) {
+        if (data.profileUrl) {
+          profileLink.href = data.profileUrl;
+          profileLink.style.display = '';
+        } else {
+          profileLink.style.display = 'none';
+        }
+      }
+
       if (!hasData) {
         el.innerHTML = `<p class="pstat-empty">No data yet — click "Edit stats" to add</p>`;
         return;
       }
-      el.innerHTML = cfg.fields.map(f => data[f.key] ? `
+      el.innerHTML = statFields.map(f => data[f.key] ? `
         <div class="pstat">
           <span class="pstat-label">${f.label}</span>
           <span class="pstat-value highlight">${escHtml(data[f.key])}</span>
@@ -2276,8 +2628,9 @@
 
   // ─── INIT ───
   document.getElementById('year').textContent = new Date().getFullYear();
-  render();
+  renderAllProjects();
   renderSkills();
+  renderExperience();
   renderLeadership();
   renderPlatforms();
   renderAwards();
