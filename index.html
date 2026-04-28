@@ -103,10 +103,24 @@
   .hero-sub {
     font-size: 17px; color: var(--text-2);
     max-width: 500px; line-height: 1.7;
-    margin-bottom: 2rem; font-weight: 300;
+    margin-bottom: 1.25rem; font-weight: 300;
   }
   .hero-sub strong { color: var(--text); font-weight: 500; }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-lang-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--bg-card);
+    border: 0.5px solid var(--border-2);
+    border-radius: 999px; padding: 6px 14px 6px 10px;
+    font-size: 12px; font-weight: 500; color: var(--text-2);
+    margin-bottom: 1.25rem; cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    width: fit-content;
+  }
+  .hero-lang-badge:hover { border-color: var(--orange); color: var(--orange); }
+  .hero-lang-badge svg:first-child { color: var(--orange); flex-shrink: 0; }
+  .hero-badge-edit { opacity: 0; transition: opacity 0.2s; flex-shrink: 0; }
+  .hero-lang-badge:hover .hero-badge-edit { opacity: 1; }
   .btn-fill {
     background: var(--orange); color: #fff;
     border: none; padding: 11px 22px;
@@ -812,6 +826,7 @@
   .detail-resource-info { flex: 1; }
   .detail-resource-name { font-size: 14px; font-weight: 500; color: var(--text); }
   .detail-resource-meta { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+  .detail-resource-desc { font-size: 12px; color: var(--text-2); margin-top: 4px; line-height: 1.55; font-style: italic; }
   .detail-resource-link { font-size: 12px; color: var(--orange); text-decoration: none; display: inline-block; margin-top: 3px; }
   .detail-resource-link:hover { text-decoration: underline; }
   .detail-applied-row {
@@ -936,6 +951,14 @@
       Building intelligent systems at the intersection of <strong>perception</strong>, <strong>machine learning</strong>, and <strong>robotics</strong>.
       Currently exploring AI/ML Engineering &amp; Perception at Universitas Airlangga.
     </p>
+    <div class="hero-lang-badge" id="heroBadge" onclick="openHeroBadgeEdit()" title="Click to update">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/>
+        <path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/>
+      </svg>
+      <span id="heroBadgeText">IELTS — In Preparation</span>
+      <svg class="hero-badge-edit" width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 2l3 3-9 9H2v-3L11 2z"/></svg>
+    </div>
     <div class="hero-ctas">
       <a href="#projects" class="btn-fill">View Projects</a>
       <a href="#contact" class="btn-ghost">Get in Touch</a>
@@ -1214,6 +1237,25 @@
   <p>Built by <span>Aditya Dhafa P.</span> &mdash; Surabaya, Indonesia &mdash; <span id="year"></span></p>
 </footer>
 
+<!-- HERO BADGE EDIT MODAL -->
+<div class="modal-overlay" id="heroBadgeOverlay" onclick="if(event.target===this)closeHeroBadgeEdit()">
+  <div class="modal" style="max-width:380px">
+    <div class="modal-header">
+      <h3 class="modal-title">English Proficiency Badge</h3>
+      <button class="modal-close" onclick="closeHeroBadgeEdit()">×</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="heroBadgeInput">Badge text</label>
+      <input class="form-input" id="heroBadgeInput" type="text" placeholder="e.g. IELTS 7.5  /  IELTS — In Preparation">
+      <p class="form-hint">Akan muncul di hero section. Update seiring progress lo.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeHeroBadgeEdit()">Cancel</button>
+      <button class="btn-save" onclick="saveHeroBadge()">Save</button>
+    </div>
+  </div>
+</div>
+
 <!-- CERT MODAL -->
 <div class="modal-overlay" id="certModalOverlay" onclick="if(event.target===this)closeCertModal()">
   <div class="modal" style="max-width:460px">
@@ -1331,8 +1373,12 @@
       <input class="form-input" id="resName" type="text" placeholder="e.g. Python for Data Analysis / learncpp.com">
     </div>
     <div class="form-group">
-      <label class="form-label" for="resAuthor">Author (optional)</label>
-      <input class="form-input" id="resAuthor" type="text" placeholder="e.g. Wes McKinney">
+      <label class="form-label" for="resAuthor">Author / Source <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+      <input class="form-input" id="resAuthor" type="text" placeholder="e.g. Wes McKinney · Creator of Pandas  /  Dr. Chuck · Univ. Michigan  /  Unair — Semester 3">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="resDesc">Notes <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+      <textarea class="form-textarea" id="resDesc" placeholder="e.g. Belajar Python untuk data analysis langsung dari pembuat Pandas. Covers NumPy, pandas, matplotlib." style="min-height:70px;resize:vertical"></textarea>
     </div>
     <div class="form-row">
       <div class="form-group">
@@ -2024,7 +2070,8 @@
         <div class="detail-resource-icon">${r.type === 'book' ? '📖' : r.type === 'website' ? '🌐' : r.type === 'course' ? '🎓' : '📄'}</div>
         <div class="detail-resource-info">
           <div class="detail-resource-name">${escHtml(r.name)}</div>
-          ${r.author ? `<div class="detail-resource-meta">by ${escHtml(r.author)}</div>` : ''}
+          ${(r.source || r.author) ? `<div class="detail-resource-meta">${escHtml(r.source || r.author)}</div>` : ''}
+          ${r.desc ? `<div class="detail-resource-desc">${escHtml(r.desc)}</div>` : ''}
           ${r.url ? `<a href="${escHtml(r.url)}" target="_blank" class="detail-resource-link">↗ Open</a>` : ''}
         </div>
         <div class="cert-actions">
@@ -2062,12 +2109,13 @@
       const r = detail.resources.find(x => x.id === id);
       document.getElementById('resModalTitle').textContent = 'Edit Resource';
       document.getElementById('resName').value = r.name;
-      document.getElementById('resAuthor').value = r.author || '';
+      document.getElementById('resAuthor').value = r.source || r.author || '';
+      document.getElementById('resDesc').value = r.desc || '';
       document.getElementById('resType').value = r.type || 'book';
       document.getElementById('resUrl').value = r.url || '';
     } else {
       document.getElementById('resModalTitle').textContent = 'Add Learning Resource';
-      ['resName','resAuthor','resUrl'].forEach(i => document.getElementById(i).value = '');
+      ['resName','resAuthor','resDesc','resUrl'].forEach(i => document.getElementById(i).value = '');
       document.getElementById('resType').value = 'book';
     }
     document.getElementById('resourceModalOverlay').classList.add('open');
@@ -2089,7 +2137,9 @@
     if (!detail.resources) detail.resources = [];
     const entry = {
       id: editingResourceId || Date.now().toString(),
-      name, author: document.getElementById('resAuthor').value.trim(),
+      name,
+      source: document.getElementById('resAuthor').value.trim(),
+      desc: document.getElementById('resDesc').value.trim(),
       type: document.getElementById('resType').value,
       url: document.getElementById('resUrl').value.trim(),
     };
@@ -2626,8 +2676,28 @@
     renderLangs(); closeLangModal();
   }
 
+  // ─── HERO BADGE ───
+  function initHeroBadge() {
+    const saved = localStorage.getItem('adp_hero_badge');
+    if (saved) document.getElementById('heroBadgeText').textContent = saved;
+  }
+  function openHeroBadgeEdit() {
+    document.getElementById('heroBadgeInput').value = document.getElementById('heroBadgeText').textContent;
+    document.getElementById('heroBadgeOverlay').classList.add('open');
+    setTimeout(() => document.getElementById('heroBadgeInput').select(), 100);
+  }
+  function closeHeroBadgeEdit() { document.getElementById('heroBadgeOverlay').classList.remove('open'); }
+  function saveHeroBadge() {
+    const val = document.getElementById('heroBadgeInput').value.trim();
+    if (!val) return;
+    document.getElementById('heroBadgeText').textContent = val;
+    localStorage.setItem('adp_hero_badge', val);
+    closeHeroBadgeEdit();
+  }
+
   // ─── INIT ───
   document.getElementById('year').textContent = new Date().getFullYear();
+  initHeroBadge();
   renderAllProjects();
   renderSkills();
   renderExperience();
